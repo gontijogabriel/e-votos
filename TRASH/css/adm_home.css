@@ -2,12 +2,16 @@
     padding: 0;
     margin: 0;
 }
+a{
+    padding: 5px;
+}
 header{
     height: 7vh;
     width: 100vw;
     background-color: purple;
 }
 body {
+    
     font-family: Arial, sans-serif;
     background-color: #f4f4f4;
     text-align: center;
@@ -23,34 +27,11 @@ body {
     justify-content: center;
     align-items: center;
     width: 300px;
+    
     margin: 0 auto;
     background-color: #fff;
-    padding: 20px;
+    padding: 30px;
     border-radius: 5px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-label {
-    display: block;
-    margin-bottom: 8px;
-}
-
-input, select {
-    width: 100%;
-    padding: 8px;
-    margin-bottom: 15px;
-    box-sizing: border-box;
-}
-
-button {
-    background-color: #4caf50;
-    color: #fff;
-    padding: 10px 15px;
-    border: none;
-    border-radius: 3px;
-    cursor: pointer;
-}
-
-button:hover {
-    background-color: #45a049;
-}
