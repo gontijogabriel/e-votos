@@ -1,0 +1,39 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/login.css' %}">
+    <title>
+        Defensoria Votação
+    </title>
+</head>
+<body>
+    <header>
+        
+    </header>
+    <body>
+        <h1>Recuperar Senha Token</h1>
+        <div>
+            <form method="POST" action="{% url 'redefinir_senha' %}">
+                {% csrf_token %}
+                <input type="hidden" id="email_user" name="email_user" value="{{ email_user }}">
+
+                <label for="token">Token:</label>
+                <input type="text" id="token" name="token" required>
+
+                <label for="email">Nova Senha:</label>
+                <input type="password" id="password-1" name="password-1" required>
+                
+                <label for="email">Digite novamente sua Senha:</label>
+                <input type="password" id="password-2" name="password-2" required>
+                
+                <button type="submit">Cadastrar nova Senha</button>
+            </form>
+
+        </div>
+    </body>
+</body>
+</html>

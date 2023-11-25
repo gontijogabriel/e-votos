@@ -1,20 +1,29 @@
 from django.contrib.auth.models import AbstractUser
 from django.db import models
 
-# class CustomUser(AbstractUser):
+
 class Eleitor(AbstractUser):
     matricula = models.CharField(max_length=20, unique=True)
     cpf = models.CharField(max_length=14, unique=True)
     name = models.CharField(max_length=255)
+
+    token_valid_vote = models.CharField(max_length=255, blank=True, null=True)
+    date_exp_valid_vote = models.DateTimeField(blank=True, null=True)
+    token_resetpassword = models.CharField(max_length=255, blank=True, null=True)
+    date_token_resetpassword = models.DateTimeField(blank=True, null=True)
 
     groups = models.ManyToManyField('auth.Group', related_name='eleitor_groups', blank=True)
     user_permissions = models.ManyToManyField('auth.Permission', related_name='eleitor_user_permissions', blank=True)
 
     def __str__(self):
         return self.username
+
     
 class Candidato(models.Model):
     matricula = models.CharField(max_length=20, unique=True)
     cpf = models.CharField(max_length=14, unique=True)
     name = models.CharField(max_length=255)
-    
+    foto_perfil = models.ImageField(upload_to='fotos_perfil/', null=True, blank=True)
+
+    def __str__(self):
+        return self.matricula

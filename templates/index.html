@@ -8,9 +8,16 @@
     <title>index</title>
 </head>
 <body>
-    <h1>Pagina do Eleitor</h1>
-    <p>{{ request.user }}</p>
-    <p>opcoes de eleicoes aqui</p>
     <a href="{% url 'logout' %}">Logout</a>
+    <h2>Pagina do Eleitor, <h1>{{ user.name }}</h1></h2>
+    <p>Matricula: {{ user.matricula }}</p>
+    <p>Email: {{ user.email }}</p>
+    <p>CPF: {{ user.cpf }}</p>
+    <p>Eleicoes disponiveis</p>
+    <ul>
+        <li><a href="#">Comite</a></li>
+        <li><a href="#">Defensor Publico</a></li>
+    </ul>
+    <a href="#">Editar meus dados</a>
 </body>
 </html>

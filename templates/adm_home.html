@@ -8,6 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="{% static 'css/adm_home.css' %}" />
     <title>Admin Home</title>
+    
 </head>
 
 <body>
@@ -20,9 +21,9 @@
     <h1>ADMIN HOME</h1>
     <div class="card-container">
         <div class="card">
-            <img src="" alt="Imagem não encontrada"/>
-            <h5>VOTANTE</h5>
-            <a href="./cadastro_eleitor.html">Adicionar Eleitor</a>
+            <!-- <img src="" alt=""/> -->
+            <h5>ELEITOR</h5>
+            <a href="{% url 'cadastro_eleitor' %}">Cadastrar Eleitor</a>
             <a href="">Editar/Excluir Eleitor</a>
             <a href="">Ver Eleitor</a>
         </div>
@@ -31,7 +32,7 @@
     <div class="card-container">
         
         <div class="card">
-            <img src="" alt="Imagem não encontrada" />
+            <img src="" alt=""/>
             <div class="">
                 <h5>CANDIDATO</h5>
                 <a href="{% url 'cadastro_candidato' %}">Adicionar Candidato</a>
@@ -41,7 +42,7 @@
         </div>
 
         <div class="card">
-            <img src="" alt="Imagem não encontrada" />
+            <img src="" alt="" />
             <div class="">
                 <h5>ELEIÇÃO</h5>
                 <a href="./cadastro_cargo.html">Gerar Eleição</a>
@@ -55,17 +56,17 @@
     <div class="card-container">
 
         <div class="card">
-            <img src="" alt="Imagem não encontrada" />
+            <img src="" alt="" />
             <div class="">
                 <h5>VOTAÇÃO</h5>
-                <a href="">Sala de Votação</a>
+                <a href="">Acompanhar Votação</a>
             </div>
         </div>
 
         <div class="card">
-            <img src="" alt="Imagem não encontrada" />
+            <img src="" alt="" />
             <div class="">
-                <h5>RESULTADO & RELATÓRIO</h5>
+                <h5>Relatórios/Resultados</h5>
                 <a href="">Gerar Resultado</a>
                 <a href="">Ver Resultado</a>
                 <a href="">Gerar Relatório</a>
@@ -73,19 +74,20 @@
             </div>
         </div>
 
-        <div class="card">
+        <!-- <div class="card">
             <img src="" alt="Imagem não encontrada" />
             <div class="">
                 <h5>RECLAMAÇÃO</h5>
                 <a href="">Ver Reclamação</a>
                 <a href="">Responder Reclamação</a>
             </div>
-        </div>
+        </div> -->
 
     </div>
 
     <a href="{% url 'logout' %}">Logout</a>
 
+    <script src="https://kit.fontawesome.com/e88f02eed8.js" crossorigin="anonymous"></script>
 </body>
 
 </html>

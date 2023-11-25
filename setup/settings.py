@@ -124,3 +124,14 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 AUTH_USER_MODEL = 'evotar.Eleitor'
+
+# Tempo de vida do Token para resetar senha, em segundos
+TOKEN_TIME_TO_DIE = 300
+
+# Configurações de Email
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = 'alertadeboletos@gmail.com'
+EMAIL_HOST_PASSWORD = 'tffsyhfjokqwqvil'
