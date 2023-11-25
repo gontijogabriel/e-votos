@@ -1,9 +1,11 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../css/cadastro_eleitor.css">
+    <link rel="stylesheet" href="{% static 'css/cadastro_eleitor.css' %}">
     <title>Cadastro Eleitor</title>
 </head>
 <header>
@@ -12,16 +14,25 @@
 <body>
     <div class="card">
         <h2>Cadastro do Eleitor</h2>
-        <form action="#" method="post">
-            <label for="CPF">CPF:</label>
-            <input type="text" id="CPF" name="CPF" required>
+        <form action="#" method="POST">
+            {% csrf_token %}
+            <label for="name">Nome:</label>
+            <input type="text" id="name" name="name" required>
 
-            <label for="nome">Nome:</label>
-            <input type="text" id="nome" name="nome" required>
+            <label for="matricula">Matricula:</label>
+            <input type="text" id="matricula" name="matricula" required>
+
+            <label for="email">Email:</label>
+            <input type="text" id="email" name="email" required>
+
+            <label for="cpf">CPF:</label>
+            <input type="text" id="cpf" name="cpf" required>
             
-            
-            <label for="Senha">Senha:</label>
-            <input type="password" id="Senha" name="Senha" required>
+            <label for="password-1">Senha:</label>
+            <input type="password" id="password-1" name="password-1" required>
+
+            <label for="password-2">Repita sua Senha:</label>
+            <input type="password" id="password-2" name="password-2" required>
 
             <button type="submit">Cadastrar Eleitor</Em></button>
         </form>

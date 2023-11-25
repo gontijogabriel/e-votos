@@ -1,3 +1,5 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,6 +8,9 @@
     <title>index</title>
 </head>
 <body>
-    <h1>teste</h1>
+    <h1>Pagina do Eleitor</h1>
+    <p>{{ request.user }}</p>
+    <p>opcoes de eleicoes aqui</p>
+    <a href="{% url 'logout' %}">Logout</a>
 </body>
 </html>

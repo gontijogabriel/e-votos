@@ -1,24 +1,26 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="pt-br">
 
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="../css/adm_home.css" />
+    <link rel="stylesheet" href="{% static 'css/adm_home.css' %}" />
     <title>Admin Home</title>
 </head>
 
 <body>
 
     <header>
-        <a href="">
-            <img class="pic" src="../assets/imagens/logo_dpdf.png" alt="Logo DPDF" />
+        <a href="#">
+            <img class="pic" src="{% static 'img/logo_dpdf.png' %}" alt="Logo DPDF" />
         </a>
     </header>
-
+    <h1>ADMIN HOME</h1>
     <div class="card-container">
         <div class="card">
-            <img src="" alt="Imagem não encontrada" />
+            <img src="" alt="Imagem não encontrada"/>
             <h5>VOTANTE</h5>
             <a href="./cadastro_eleitor.html">Adicionar Eleitor</a>
             <a href="">Editar/Excluir Eleitor</a>
@@ -27,11 +29,12 @@
     </div>
 
     <div class="card-container">
+        
         <div class="card">
             <img src="" alt="Imagem não encontrada" />
             <div class="">
                 <h5>CANDIDATO</h5>
-                <a href="./cadastro_candidato.html">Adicionar Candidato</a>
+                <a href="{% url 'cadastro_candidato' %}">Adicionar Candidato</a>
                 <a href="">Editar/Excluir Candidato</a>
                 <a href="">Ver Candidato</a>
             </div>
@@ -46,9 +49,11 @@
                 <a href="">Completar Eleição</a>
             </div>
         </div>
+
     </div>
 
     <div class="card-container">
+
         <div class="card">
             <img src="" alt="Imagem não encontrada" />
             <div class="">
@@ -76,7 +81,10 @@
                 <a href="">Responder Reclamação</a>
             </div>
         </div>
+
     </div>
+
+    <a href="{% url 'logout' %}">Logout</a>
 
 </body>
 
