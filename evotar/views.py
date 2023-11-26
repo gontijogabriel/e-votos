@@ -4,11 +4,15 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate, login as auth_login # Função renomeada para evitar conflito
 from django.contrib.auth.decorators import user_passes_test
 from datetime import datetime
-from evotar.utils import enviar_token_email, gerar_token
+from evotar.utils import is_admin, enviar_token_email, gerar_token
 from django.conf import settings
+from evotar.models import Eleicao, Candidato
 
 # Login
 def login_view(request):
+    # Limpa os cookies de autenticacao
+    logout(request)
+
     if request.method == 'POST':
         username = request.POST.get('email')
         password = request.POST.get('password')
@@ -19,7 +23,7 @@ def login_view(request):
             if user.is_superuser:
                 # O usuário é um admin!
                 auth_login(request, user)
-                return redirect('adm_home', user)
+                return redirect('adm_home')
             else:
                 # O usuário não tem permissão de admin!
                 auth_login(request, user)
@@ -59,13 +63,9 @@ def recuperar_senha(request):
 
             token = gerar_token()
 
-            # Armazena o token no banco de dados associado ao usuário
             user.token_resetpassword = token
             user.date_token_resetpassword = datetime.now()
             user.save()
-
-            # manda email con token
-            # enviar_token_email(user, token)
 
             try:
                 enviar_token_email(user, token)
@@ -120,23 +120,77 @@ def redefinir_senha(request):
             
     return redirect('login')
 
-# Verifica se o admin esta autenticado
-def is_admin(user):
-    return user.is_authenticated and user.is_superuser
-
-@login_required(login_url='login')
-@user_passes_test(is_admin, login_url='index')
-def cadastro_candidato(request):
-    return render(request, 'cadastro_candidato.html')
-
 @login_required(login_url='login')
 def index(request):
     return render(request, 'index.html')
 
 @login_required(login_url='login')
-@user_passes_test(is_admin, login_url='index')
+@user_passes_test(is_admin, login_url='login')
 def adm_home(request):
     return render(request, 'adm_home.html')
+
+from django.db import IntegrityError
+from django.http import HttpResponseBadRequest
+@login_required(login_url='login')
+@user_passes_test(is_admin, login_url='login')
+def cadastro_candidato(request):
+    msg = request.GET.get('msg', '')
+    
+    if request.method == 'POST':
+        try:
+            nome = request.POST.get('nome')
+            matricula = request.POST.get('matricula')
+            cpf = request.POST.get('cpf')
+            foto_perfil = request.FILES.get('foto_perfil')
+
+            if Candidato.objects.filter(cpf=cpf).exists():
+                msg = 'Candidato com CPF já cadastrado.'
+            else:
+                novo_candidato = Candidato(nome=nome, matricula=matricula, cpf=cpf, foto_perfil=foto_perfil)
+                novo_candidato.save()
+                msg = 'Candidato cadastrado com sucesso!'
+        except IntegrityError:
+            msg = 'Erro ao cadastrar candidato. CPF já cadastrado.'
+    
+    return render(request, 'cadastro_candidato.html', {'msg': msg})
+
+@login_required(login_url='login')
+@user_passes_test(is_admin, login_url='login')
+def nova_eleicao(request):
+    if request.method == 'POST':
+        nome = request.POST.get('nome')
+        tipo_de_eleicao = request.POST.get('tipo_de_eleicao')
+        data_de_inicio = request.POST.get('data_de_inicio')
+        data_de_fim = request.POST.get('data_de_fim')
+
+        candidatos_selecionados = request.POST.getlist('candidatos')
+
+        print(f'{nome}')
+        print(f'{tipo_de_eleicao}')
+        print(f'{data_de_inicio}')
+        print(f'{data_de_fim}')
+        print(f'{candidatos_selecionados}')
+
+        # Converter data_de_inicio e data_de_fim para o formato apropriado
+        # Isso depende do formato que o seu formulário envia as datas.
+
+        eleicao = Eleicao.objects.create(
+            nome=nome,
+            tipo=tipo_de_eleicao,
+            data_inicio=data_de_inicio,
+            data_fim=data_de_fim
+        )
+
+        eleicao.candidatos.set(candidatos_selecionados)
+
+        # Redirecione para a página de detalhes da eleição ou para onde desejar
+        # return redirect('nome_da_view_de_detalhes', pk=eleicao.pk)
+        return redirect('adm-home')
+
+    # Se o método não for POST, renderize a página do formulário
+    candidatos = Candidato.objects.all()
+
+    return render(request, 'nova_eleicao.html', {'candidatos': candidatos})
 
 def logout_view(request):
     logout(request)

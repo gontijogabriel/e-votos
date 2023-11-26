@@ -1,0 +1,67 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/nova_eleicao.css' %}">
+    <title>Criar nova Eleição</title>
+</head>
+<header>
+
+</header>
+<body>
+    <div class="card">
+        <h2>Cadastro de Eleição</h2>
+        <form method="POST" action="{% url 'nova_eleicao' %}" >
+            {% csrf_token %}
+            <label for="nome">Nome da eleição:</label>
+            <input type="text" id="nome" name="nome" required>
+
+            <label for="tipo_de_eleicao">Tipo de Eleição:</label>
+            <select id="tipo_de_eleicao" name="tipo_de_eleicao" required>
+                <option disabled selected>Selecione uma opção</option>
+                <option value="comite">Comitê</option>
+                <option value="defensor_publico">Defensor Público</option>
+            </select>
+
+            <label for="data_de_inicio">Data de Inicio:</label>
+            <input type="datetime-local" id="data_de_inicio" name="data_de_inicio" required>
+
+            <label for="data_de_fim">Data de Fim:</label>
+            <input type="datetime-local" id="data_de_fim" name="data_de_fim" required>
+
+            <label for="candidatos">Opcões de Candidatos para participar das Eleições:</label>
+            
+            {% if candidatos %}
+            <table>
+                <thead>
+                    <tr>
+                        <th>Matrícula</th>
+                        <th>Nome</th>
+                        <th>CPF</th>
+                        <th>Selecionar</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for cand in candidatos %}
+                        <tr>
+                            <td>{{ cand.matricula }}</td>
+                            <td>{{ cand.nome }}</td>
+                            <td>{{ cand.cpf }}</td>
+                            <td>
+                                <input type="checkbox" id="candidato{{ cand.id }}" name="candidatos" value="{{ cand.id }}">
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            {% else %}
+                <p>Não existe candidatos cadastrados</p>
+            {% endif %}
+            <button type="submit">Criar Eleição</button>
+        </form>
+        </div>
+</body>
+</html>
