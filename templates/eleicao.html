@@ -31,7 +31,13 @@
                 <td><img src="/media/{{ candi.foto_perfil }}" alt="{{ candi.nome }}" width="120px" height="120px"></td>
                 <td>{{ candi.nome }}</td>
                 <td>{{ candi.matricula }}</td>
-                <td><button>Votar</button></td>
+
+                <form action="" method="GET">
+                    {% csrf_token %}
+                    <input type="hidden" name="candidato_id" id="candidato_id" value="{{ candi.id }}">
+                    <td><button type="submit">Votar</button></td>
+                </form>
+            
             </tr>
             {% endfor %}
         </tbody>

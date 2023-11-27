@@ -16,6 +16,9 @@
     </header>
     <body>
         <h1>Recuperar Senha Token</h1>
+        {% if msg %}
+            <p>console: {{ msg }}</p>
+        {% endif %}
         <div>
             <form method="POST" action="{% url 'redefinir_senha' %}">
                 {% csrf_token %}

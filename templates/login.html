@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{% static 'css/login.css' %}">
     <title>
-        Defensoria Votação
+        Urna Digital DPDF
     </title>
 </head>
 <body>
@@ -15,9 +15,12 @@
         
     </header>
     <body>
-        <h1>E-Votos Login</h1>
+        <h1>Urna Digital DPDF</h1>
+        {% if msg %}
+            <p>{{ msg }}</p>
+        {% endif %}
         <div>
-            <form action="#" method="POST">
+            <form method="POST">
                 {% csrf_token %}
                 <label for="login">Email:</label>
                 <input type="text" id="email" name="email" required>

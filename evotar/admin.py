@@ -3,7 +3,7 @@ from evotar.models import Candidato, Eleitor, Eleicao, Voto
 
 @admin.register(Eleitor)
 class EleitorAdmin(admin.ModelAdmin):
-    list_display = ['matricula','email', 'cpf', 'name', 'token_valid_vote', 'date_exp_valid_vote', 'token_resetpassword', 'date_token_resetpassword']
+    list_display = ['matricula','email', 'cpf', 'name', 'token_valid', 'date_token']
     search_fields = ['matricula', 'cpf', 'name']
     list_filter = ['groups', 'user_permissions']
 
