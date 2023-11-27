@@ -18,39 +18,33 @@
         <li>></li>
         <li><a href="#">Eleição ({{ eleicao.nome }})</a></li>
     </ol>
+  
+    <h2>Candidatos:</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Foto</th>
+                <th>Nome</th>
+                <th>Matricula</th>
+                <th>Votar</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for candi in candidatos %}
+            <tr>
+                <td><img src="/media/{{ candi.foto_perfil }}" alt="{{ candi.nome }}" width="120px" height="120px"></td>
+                <td>{{ candi.nome }}</td>
+                <td>{{ candi.matricula }}</td>
 
-    <div class="caixa-eleicao">
-        <h1>{{ eleicao.nome }}</h1>
-        <div class="caixa-eleicao-atributos">
-            <p>Tipo: {{ eleicao.tipo }}</p>
-            <p>Data de Início: {{ eleicao.data_inicio|date:"d/m/Y H:i" }}</p>
-            <p>Data de Fim: {{ eleicao.data_fim|date:"d/m/Y H:i" }}</p>
-        </div>
-    </div>
-    
-    <div class="card">
-        <h2>Candidatos</h2>
-        <table>
-            <thead>
-                <tr>
-                    <th>Foto</th>
-                    <th>Nome</th>
-                    <th>Matricula</th>
-                    <th>Votar</th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for candi in candidatos %}
-                <tr>
-                    <td><img class="pic-cand" src="/media/{{ candi.foto_perfil }}" alt="{{ candi.nome }}" ></td>
-                    <td>{{ candi.nome }}</td>
-                    <td>{{ candi.matricula }}</td>
-                    <td><button>Votar</button></td>
-                </tr>
-                {% endfor %}
-            </tbody>
-        </table>
-    </div>
-    
+                <form action="" method="GET">
+                    {% csrf_token %}
+                    <input type="hidden" name="candidato_id" id="candidato_id" value="{{ candi.id }}">
+                    <td><button type="submit">Votar</button></td>
+                </form>
+            
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
 </body>
 </html>

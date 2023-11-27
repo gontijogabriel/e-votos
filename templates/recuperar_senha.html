@@ -16,6 +16,9 @@
     </header>
     <body>
         <h1>Recuperar Senha</h1>
+        {% if msg %}
+            <p>console: {{ msg }}</p>
+        {% endif %}
         <div>
             <form method="POST">
                 {% csrf_token %}

@@ -18,17 +18,14 @@ urlpatterns = [
     path('cadastro-eleitor/', cadastro_eleitor, name='cadastro_eleitor'),
     path('cadastro-candidato/', cadastro_candidato, name='cadastro_candidato'),
 
-    path('nova-eleicao/', nova_eleicao, name='nova_eleicao'),
-    # path('token_recuperar_senha/', token_recuperar_senha, name='token_recuperar_senha'),
+    path('adm-home/nova-eleicao/', nova_eleicao, name='nova_eleicao'),
     
-    # URL para a página de solicitação de recuperação de senha
     path('recuperar-senha/', recuperar_senha, name='recuperar_senha'),
 
     # URL para a página de redefinição de senha com token
     path('redefinir-senha/', redefinir_senha, name='redefinir_senha'),
 
-    # URL para a página de eleicao
-    path('eleicao/', eleicao, name='eleicao'),
+    path('index/eleicao/', eleicao, name='eleicao'),
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 

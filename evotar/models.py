@@ -7,10 +7,8 @@ class Eleitor(AbstractUser):
     cpf = models.CharField(max_length=14, unique=True)
     name = models.CharField(max_length=255)
 
-    token_valid_vote = models.CharField(max_length=255, blank=True, null=True)
-    date_exp_valid_vote = models.DateTimeField(blank=True, null=True)
-    token_resetpassword = models.CharField(max_length=255, blank=True, null=True)
-    date_token_resetpassword = models.DateTimeField(blank=True, null=True)
+    token_valid = models.CharField(max_length=255, blank=True, null=True)
+    date_token = models.CharField(max_length=255, blank=True, null=True)
 
     groups = models.ManyToManyField('auth.Group', related_name='eleitor_groups', blank=True)
     user_permissions = models.ManyToManyField('auth.Permission', related_name='eleitor_user_permissions', blank=True)
