@@ -1,22 +1,28 @@
 {% load static %}
-
+{% include '_header.html' %}
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{% static 'css/login.css' %}">
+    
     <title>
         Defensoria Votação
     </title>
 </head>
+<script src="../templates/_header.html"></script>
 <body>
-    <header>
-        
-    </header>
+    
     <body>
-        <h1>E-Votos Login</h1>
-        <div>
+    <div class="main-container">
+        <div class="left">
+        <img src="../static/img/login_img.gif" alt="Gif Animado">
+        <a href="https://storyset.com/user">User illustrations by Storyset</a>
+        </div>
+        
+        <div class="right">
+            <h1>Urna Digital DPDF</h1>
             <form action="#" method="POST">
                 {% csrf_token %}
                 <label for="login">Email:</label>
@@ -31,6 +37,7 @@
 
             <a href="{% url 'recuperar_senha' %}">Recuperar Senha</a>
         </div>
+    </div>
+        
     </body>
-</body>
 </html>

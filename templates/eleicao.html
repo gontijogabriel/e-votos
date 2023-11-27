@@ -1,21 +1,28 @@
 {% load static %}
-
+{% include '_header.html' %}
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Eleicao</title>
+    <link rel="stylesheet" href="../static/css/eleicao.css">
+    <title>Eleição</title>
 </head>
+<script src="../templates/_header.html"></script>
 <body>
 
-
-    <h1>{{ eleicao.nome }}</h1>
-    <p>Tipo: {{ eleicao.tipo }}</p>
+    <div class="caixa-eleicao">
+        <h1>{{ eleicao.nome }}</h1>
+        <div class="caixa-eleicao-atributos">
+            <p>Tipo: {{ eleicao.tipo }}</p>
     <p>Data de Início: {{ eleicao.data_inicio }}</p>
     <p>Data de Fim: {{ eleicao.data_fim }}</p>
-
-    <h2>Candidatos:</h2>
+        </div>
+    
+    </div>
+    
+    <div class="card">
+        <h2>Candidatos</h2>
     <table>
         <thead>
             <tr>
@@ -28,7 +35,7 @@
         <tbody>
             {% for candi in candidatos %}
             <tr>
-                <td><img src="/media/{{ candi.foto_perfil }}" alt="{{ candi.nome }}" width="120px" height="120px"></td>
+                <td><img class="pic-cand" src="/media/{{ candi.foto_perfil }}" alt="{{ candi.nome }}" ></td>
                 <td>{{ candi.nome }}</td>
                 <td>{{ candi.matricula }}</td>
                 <td><button>Votar</button></td>
@@ -36,5 +43,7 @@
             {% endfor %}
         </tbody>
     </table>
+    </div>
+    
 </body>
 </html>
