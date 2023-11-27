@@ -20,6 +20,7 @@
             <p>console: {{ msg }}</p>
         {% endif %}
         <div>
+            
             <form method="POST" action="{% url 'redefinir_senha' %}">
                 {% csrf_token %}
                 <input type="hidden" id="email_user" name="email_user" value="{{ email_user }}">

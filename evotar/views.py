@@ -80,7 +80,8 @@ def recuperar_senha(request):
             try:
                 enviar_token_email(user, token)
                 
-                return render(request, 'token_recuperar_senha.html')
+                return render(request, 'token_recuperar_senha.html', {'email_user': email})
+            
             except Exception as e:
                 print(f'Erro ao mandar email com token: {e}')
                 msg = 'Erro ao enviar o email com o token'
@@ -96,8 +97,7 @@ def recuperar_senha(request):
 
 # Redefinir Senha
 def redefinir_senha(request):
-    print('2 - REDEFINIR SENHA')
-    #msg = request.GET.get('msg', '')
+    msg = request.GET.get('msg', '')
     
     if request.method == 'POST':
         email = request.POST.get('email_user')
@@ -107,103 +107,44 @@ def redefinir_senha(request):
 
         User = get_user_model()
 
-        # Validar se o email existe antes de tentar recuperar o usuário
+        # Valida se o email existe antes de tentar recuperar o usuário
         try:
             user = User.objects.get(email=email)
         except User.DoesNotExist:
             msg = 'Usuário não encontrado'
-            return render(request, 'recuperar_senha.html', {'msg': msg})
-
+            return render(request, 'token_recuperar_senha.html', {'msg': msg})
+        
         formato_string = "%Y-%m-%d %H:%M:%S.%f"
         date_token_dt = datetime.strptime(user.date_token, formato_string)
         vida_token = datetime.now() - date_token_dt
-        
+
         try:
             if user.token_valid == token:
+
                 if vida_token.seconds < settings.TOKEN_TIME_TO_DIE:
+
                     if senha1 == senha2:
                         # Atualize a senha do usuário
                         user.set_password(senha1)
                         user.save()
-
+                        print('----- 6 -----')
                         # Limpe o token e a data associada
                         user.token_resetpassword = None
                         user.date_token_resetpassword = None
                         user.save()
-
+                        print('----- 7 -----')
                         return render(request, 'login.html')
                     else:
-                        print('As senhas não coincidem')
                         msg = 'As senhas não coincidem'
                 else:
-                    print('Tempo de vida do Token expirado!')
                     msg = 'Tempo de vida do Token expirado!'
             else:
-                print('Token incorreto')
                 msg = 'Token incorreto'
         except Exception as e:
-            print(f'Erro: {e}')
+            print(f'Erro "redefinir_senha": {e}')
             msg = 'Erro durante a redefinição da senha'
 
-    return render(request, 'token_recuperar_senha.html', {'msg': msg})
-# def redefinir_senha(request):
-#     print('2 - REDEFINIR SENHA')
-#     msg = request.GET.get('msg', '')
-    
-#     if request.method == 'POST':
-#         email = request.POST.get('email_user')
-#         token = request.POST.get('token')
-#         senha1 = request.POST.get('password-1')
-#         senha2 = request.POST.get('password-2')
-
-#         User = get_user_model()
-#         user = User.objects.get(email=email)
-        
-#         formato_string = "%Y-%m-%d %H:%M:%S.%f"
-#         date_token_dt = datetime.strptime(user.date_token, formato_string)
-#         vida_token = datetime.now() - date_token_dt
-        
-#         print(f'{email}')
-#         print(f'{token}')
-#         print(f'{senha1}')
-#         print(f'{senha2}')
-#         print(f'{formato_string}')
-#         print(f'{date_token_dt}')
-#         print(f'{vida_token}')
-#         print(f'{vida_token.seconds}')
-        
-#         try:
-#             if user.token_valid == token:
-#                 if vida_token.seconds < settings.TOKEN_TIME_TO_DIE:
-#                     if senha1 == senha2:
-                        
-#                         # Atualize a senha do usuário
-#                         user.set_password(senha1)
-#                         user.save()
-
-#                         # Limpe o token e a data associada
-#                         user.token_resetpassword = None
-#                         user.date_token_resetpassword = None
-#                         user.save()
-                        
-#                         return render(request, 'login.html')
-                    
-#                     else:
-#                         print('As senhas nao coincidem')
-#                         msg = 'As senhas nao coincidem'
-#                         # return render(request, 'recuperar_senha.html', {'msg': msg})
-#                 else:
-#                     print('Tempo de vida do Token expirado!')
-#                     msg = 'Tempo de vida do Token expirado!'
-#                     # return render(request, 'recuperar_senha.html', {'msg': msg})
-#             else:
-#                 print('Token incorreto')
-#                 msg = 'Token incorreto'
-#                 # return render(request, 'recuperar_senha.html', {'msg': msg})
-#         except:
-#             msg = 'Erro em alguma coisa ai'
-            
-#     return render(request, 'token_recuperar_senha.html', {'msg': msg})
+    return render(request, 'token_recuperar_senha.html', {'msg': msg, 'email_user': email})
 
 
 @login_required(login_url='login')
