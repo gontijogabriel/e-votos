@@ -1,0 +1,40 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eleicao</title>
+</head>
+<body>
+
+
+    <h1>{{ eleicao.nome }}</h1>
+    <p>Tipo: {{ eleicao.tipo }}</p>
+    <p>Data de Início: {{ eleicao.data_inicio }}</p>
+    <p>Data de Fim: {{ eleicao.data_fim }}</p>
+
+    <h2>Candidatos:</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Foto</th>
+                <th>Nome</th>
+                <th>Matricula</th>
+                <th>Votar</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for candi in candidatos %}
+            <tr>
+                <td><img src="/media/{{ candi.foto_perfil }}" alt="{{ candi.nome }}" width="120px" height="120px"></td>
+                <td>{{ candi.nome }}</td>
+                <td>{{ candi.matricula }}</td>
+                <td><button>Votar</button></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>

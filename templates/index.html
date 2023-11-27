@@ -13,11 +13,40 @@
     <p>Matricula: {{ user.matricula }}</p>
     <p>Email: {{ user.email }}</p>
     <p>CPF: {{ user.cpf }}</p>
-    <p>Eleicoes disponiveis</p>
-    <ul>
-        <li><a href="#">Comite</a></li>
-        <li><a href="#">Defensor Publico</a></li>
-    </ul>
+
+    {% if eleicoes %}
+    <p>Eleicoes disponiveis:</p>
+    <table>
+        <thead>
+            <tr>
+                <th>Nome</th>
+                <th>Tipo</th>
+                <th>Inicio/Hora</th>
+                <th>Fim/Hora</th>
+                <th>Link</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for elei in eleicoes %}
+                <tr>                
+                    <td>{{ elei.nome }}</td>
+                    <td>{{ elei.tipo }}</td>
+                    <td>{{ elei.data_inicio|date:"d/m/Y H:i" }}</td>
+                    <td>{{ elei.data_fim|date:"d/m/Y H:i" }}</td>
+                    <form action="{% url 'eleicao' %}" method="POST">
+                        {% csrf_token %}
+                        <input type="hidden" id="eleicao_id" name="eleicao_id" value="{{ elei.id }}">
+                        <td><button type="submit">Votar</button></td>
+                    </form>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    {% else %}
+        <p>Não existe eleições disponiveis!</p>
+    {% endif %}
+
     <a href="#">Editar meus dados</a>
 </body>
 </html>

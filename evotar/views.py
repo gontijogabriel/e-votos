@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth import logout, get_user_model
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate, login as auth_login # Função renomeada para evitar conflito
@@ -92,8 +92,6 @@ def redefinir_senha(request):
         User = get_user_model()
         user = User.objects.get(email=email)
 
-        print(f'TEMPO EM SEGUNDOS DA VALIDADE DO TOKEN = {settings.TOKEN_TIME_TO_DIE}')
-
         # Verifique se o token é válido e se não expirou
         if user.token_resetpassword == token and user.date_token_resetpassword is not None and (datetime.now() - user.date_token_resetpassword).total_seconds() < settings.TOKEN_TIME_TO_DIE: # 5 minutos
             # Verifique se as senhas são iguais
@@ -122,7 +120,8 @@ def redefinir_senha(request):
 
 @login_required(login_url='login')
 def index(request):
-    return render(request, 'index.html')
+    eleicoes = Eleicao.objects.all()
+    return render(request, 'index.html', {'eleicoes': eleicoes})
 
 @login_required(login_url='login')
 @user_passes_test(is_admin, login_url='login')
@@ -130,7 +129,6 @@ def adm_home(request):
     return render(request, 'adm_home.html')
 
 from django.db import IntegrityError
-from django.http import HttpResponseBadRequest
 @login_required(login_url='login')
 @user_passes_test(is_admin, login_url='login')
 def cadastro_candidato(request):
@@ -165,15 +163,6 @@ def nova_eleicao(request):
 
         candidatos_selecionados = request.POST.getlist('candidatos')
 
-        print(f'{nome}')
-        print(f'{tipo_de_eleicao}')
-        print(f'{data_de_inicio}')
-        print(f'{data_de_fim}')
-        print(f'{candidatos_selecionados}')
-
-        # Converter data_de_inicio e data_de_fim para o formato apropriado
-        # Isso depende do formato que o seu formulário envia as datas.
-
         eleicao = Eleicao.objects.create(
             nome=nome,
             tipo=tipo_de_eleicao,
@@ -183,14 +172,31 @@ def nova_eleicao(request):
 
         eleicao.candidatos.set(candidatos_selecionados)
 
-        # Redirecione para a página de detalhes da eleição ou para onde desejar
-        # return redirect('nome_da_view_de_detalhes', pk=eleicao.pk)
-        return redirect('adm-home')
-
-    # Se o método não for POST, renderize a página do formulário
+        return render(request, 'adm_home.html')
+    
     candidatos = Candidato.objects.all()
-
     return render(request, 'nova_eleicao.html', {'candidatos': candidatos})
+
+
+
+@login_required(login_url='login')
+def eleicao(request):
+    if request.method == 'POST':
+        eleicao_id = request.POST.get('eleicao_id')
+        
+        # Obtém a eleição com o ID fornecido ou retorna um erro 404 se não existir
+        eleicao = get_object_or_404(Eleicao, id=eleicao_id)
+
+        # Obtém todos os candidatos associados a esta eleição
+        candidatos = eleicao.candidatos.all()
+
+        # Renderiza o template com os dados
+        return render(request, 'eleicao.html', {'eleicao': eleicao, 'candidatos': candidatos})
+
+    eleicoes = Eleicao.objects.all()
+    return render(request, 'index.html', {'eleicoes': eleicoes})
+
+
 
 def logout_view(request):
     logout(request)

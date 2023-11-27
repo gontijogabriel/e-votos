@@ -1,7 +1,13 @@
 from django.conf import settings
 from django.conf.urls.static import static
 from django.urls import path
-from evotar.views import index, login_view, logout_view, adm_home, cadastro_eleitor, cadastro_candidato, recuperar_senha, redefinir_senha, nova_eleicao
+from evotar.views import (
+    index, adm_home, 
+    login_view, logout_view,
+    recuperar_senha, redefinir_senha,
+    cadastro_eleitor, cadastro_candidato,
+    nova_eleicao, eleicao
+)
 
 urlpatterns = [
     path('', login_view, name='login'),
@@ -21,8 +27,11 @@ urlpatterns = [
     # URL para a página de redefinição de senha com token
     path('redefinir-senha/', redefinir_senha, name='redefinir_senha'),
 
+    # URL para a página de eleicao
+    path('eleicao/', eleicao, name='eleicao'),
+
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 # As seguintes linhas são para servir os arquivos de mídia durante o desenvolvimento:
-# if settings.DEBUG:
-#     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

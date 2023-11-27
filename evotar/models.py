@@ -32,8 +32,8 @@ class Eleicao(models.Model):
     nome = models.CharField(max_length=255)
     tipo = models.CharField(max_length=100)
     candidatos = models.ManyToManyField(Candidato, related_name='eleicoes')
-    data_inicio = models.DateField()
-    data_fim = models.DateField()
+    data_inicio = models.DateTimeField()
+    data_fim = models.DateTimeField()
 
     def __str__(self):
         return self.nome
