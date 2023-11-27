@@ -106,6 +106,20 @@ def redefinir_senha(request):
         senha2 = request.POST.get('password-2')
 
         User = get_user_model()
+        user = User.objects.get(email=email)
+
+        # Verifique se o token é válido e se não expirou
+        if user.token_resetpassword == token and user.date_token_resetpassword is not None: # and (datetime.now() - user.date_token_resetpassword).total_seconds() < settings.TOKEN_TIME_TO_DIE: # 5 minutos
+            # Verifique se as senhas são iguais
+            if senha1 == senha2:
+                # Atualize a senha do usuário
+                user.set_password(senha1)
+                user.save()
+
+                # Limpe o token e a data associada
+                user.token_resetpassword = None
+                user.date_token_resetpassword = None
+                user.save()
 
         # Valida se o email existe antes de tentar recuperar o usuário
         try:

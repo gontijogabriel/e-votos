@@ -1,52 +1,63 @@
 {% load static %}
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>index</title>
+    <link rel="stylesheet" href="{% static 'css/index.css' %}">
+    <title>Eleitor DPDF</title>
 </head>
+
 <body>
-    <a href="{% url 'logout' %}">Logout</a>
-    <h2>Pagina do Eleitor, <h1>{{ user.name }}</h1></h2>
-    <p>Matricula: {{ user.matricula }}</p>
-    <p>Email: {{ user.email }}</p>
-    <p>CPF: {{ user.cpf }}</p>
+    {% include '_header.html' %}
 
-    {% if eleicoes %}
-    <p>Eleicoes disponiveis:</p>
-    <table>
-        <thead>
-            <tr>
-                <th>Nome</th>
-                <th>Tipo</th>
-                <th>Inicio/Hora</th>
-                <th>Fim/Hora</th>
-                <th>Link</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for elei in eleicoes %}
-                <tr>                
-                    <td>{{ elei.nome }}</td>
-                    <td>{{ elei.tipo }}</td>
-                    <td>{{ elei.data_inicio|date:"d/m/Y H:i" }}</td>
-                    <td>{{ elei.data_fim|date:"d/m/Y H:i" }}</td>
-                    <form action="{% url 'eleicao' %}" method="POST">
-                        {% csrf_token %}
-                        <input type="hidden" id="eleicao_id" name="eleicao_id" value="{{ elei.id }}">
-                        <td><button type="submit">Votar</button></td>
-                    </form>
-                </tr>
-            {% endfor %}
-        </tbody>
-    </table>
+    <ol class="caminho">
+        <li><a href="{% url 'index' %}">Home</a></li>
+    </ol>
 
-    {% else %}
-        <p>Não existe eleições disponiveis!</p>
-    {% endif %}
-
-    <a href="#">Editar meus dados</a>
+    <div class="card">
+        <h2>Pagina do Eleitor, <h1>{{ user.name }}</h1></h2>
+        <p>Matricula: {{ user.matricula }}</p>
+        <p>Email: {{ user.email }}</p>
+        <p>CPF: {{ user.cpf }}</p>
+        <a href="#">Editar meus dados</a>
+    
+        <div class="card-tabela">
+            {% if eleicoes %}
+            <p>Eleicoes disponiveis:</p>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Nome</th>
+                        <th>Tipo</th>
+                        <th>Inicio/Hora</th>
+                        <th>Fim/Hora</th>
+                        <th>Link</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for elei in eleicoes %}
+                        <tr>                
+                            <td>{{ elei.nome }}</td>
+                            <td>{{ elei.tipo }}</td>
+                            <td>{{ elei.data_inicio|date:"d/m/Y H:i" }}</td>
+                            <td>{{ elei.data_fim|date:"d/m/Y H:i" }}</td>
+                            <form action="{% url 'eleicao' %}" method="POST">
+                                {% csrf_token %}
+                                <input type="hidden" id="eleicao_id" name="eleicao_id" value="{{ elei.id }}">
+                                <td><button type="submit">Votar</button></td>
+                            </form>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    
+        {% else %}
+            <p>Não existe eleições disponiveis!</p>
+        {% endif %}
+    </div>
+   
 </body>
 </html>

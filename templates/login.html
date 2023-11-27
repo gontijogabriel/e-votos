@@ -6,21 +6,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{% static 'css/login.css' %}">
-    <title>
-        Urna Digital DPDF
-    </title>
+    <title>Urna Digital DPDF</title>
 </head>
+<!-- <script src="../templates/_header.html"></script> -->
 <body>
-    <header>
-        
-    </header>
-    <body>
-        <h1>Urna Digital DPDF</h1>
-        {% if msg %}
-            <p>{{ msg }}</p>
-        {% endif %}
-        <div>
-            <form method="POST">
+    {% include '_header.html' %}
+    <div class="main-container">
+        <div class="left">
+        <img src="../static/img/login_img.gif" alt="Gif Animado">
+        <!-- <a href="https://storyset.com/user">User illustrations by Storyset</a> -->
+        </div>
+        <div class="right">
+            <h1>Urna Digital DPDF</h1>
+            <form action="#" method="POST">
                 {% csrf_token %}
                 <label for="login">Email:</label>
                 <input type="text" id="email" name="email" required>
@@ -34,6 +32,7 @@
 
             <a href="{% url 'recuperar_senha' %}">Recuperar Senha</a>
         </div>
-    </body>
+    </div>
+        
 </body>
 </html>
