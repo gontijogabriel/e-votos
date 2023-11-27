@@ -8,86 +8,51 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="{% static 'css/adm_home.css' %}" />
     <title>Admin Home</title>
-    
 </head>
 
 <body>
 
-    <header>
-        <a href="#">
-            <img class="pic" src="{% static 'img/logo_dpdf.png' %}" alt="Logo DPDF" />
-        </a>
-    </header>
-    <h1>ADMIN HOME</h1>
+    {% include '_header.html' %}
+
+    <h1>ADMIN</h1>
     <div class="card-container">
         <div class="card">
             <!-- <img src="" alt=""/> -->
             <h5>ELEITOR</h5>
-            <a href="{% url 'cadastro_eleitor' %}">Cadastrar Eleitor</a>
-            <a href="">Editar/Excluir Eleitor</a>
-            <a href="">Ver Eleitor</a>
-        </div>
-    </div>
-
-    <div class="card-container">
-        
-        <div class="card">
-            <img src="" alt=""/>
-            <div class="">
-                <h5>CANDIDATO</h5>
-                <a href="{% url 'cadastro_candidato' %}">Adicionar Candidato</a>
-                <a href="">Editar/Excluir Candidato</a>
-                <a href="">Ver Candidato</a>
-            </div>
+            <a href="{% url 'cadastro_eleitor' %}">Cadastrar</a>
+            <a href="">Editar</a>
         </div>
 
         <div class="card">
-            <img src="" alt="" />
-            <div class="">
-                <h5>ELEIÇÃO</h5>
-                <a href="{% url 'nova_eleicao' %}">Gerar Eleição</a>
-                <a href="">Modificar Eleição</a>
-                <a href="">Completar Eleição</a>
-            </div>
-        </div>
-
-    </div>
-
-    <div class="card-container">
-
-        <div class="card">
-            <img src="" alt="" />
-            <div class="">
-                <h5>VOTAÇÃO</h5>
-                <a href="">Acompanhar Votação</a>
-            </div>
+            <!-- <img src="" alt=""/> -->
+            <h5>CANDIDATO</h5>
+            <a href="{% url 'cadastro_candidato' %}">Cadastrar</a>
+            <a href="">Editar</a>
         </div>
 
         <div class="card">
-            <img src="" alt="" />
-            <div class="">
-                <h5>Relatórios/Resultados</h5>
-                <a href="">Gerar Resultado</a>
-                <a href="">Ver Resultado</a>
-                <a href="">Gerar Relatório</a>
-                <a href="">Ver Relatório</a>
-            </div>
+            <!-- <img src="" alt=""/> -->
+            <h5>ELEIÇÃO</h5>
+            <a href="{% url 'nova_eleicao' %}">Nova Eleição</a>
+            <a href="">Editar</a>
         </div>
 
-        <!-- <div class="card">
-            <img src="" alt="Imagem não encontrada" />
-            <div class="">
-                <h5>RECLAMAÇÃO</h5>
-                <a href="">Ver Reclamação</a>
-                <a href="">Responder Reclamação</a>
-            </div>
-        </div> -->
+        <div class="card">
+            <!-- <img src="" alt=""/> -->
+            <h5>VOTAÇÃO</h5>
+            <a href="">Acompanhar Votação</a>
+        </div>
 
+        <div class="card">
+            <!-- <img src="" alt=""/> -->
+            <h5>RELATÓRIOS</h5>
+            <a href="">Gerar Resultado</a>
+            <a href="">Ver Resultado</a>
+        </div>
+    
     </div>
 
     <a href="{% url 'logout' %}">Logout</a>
 
-    <script src="https://kit.fontawesome.com/e88f02eed8.js" crossorigin="anonymous"></script>
 </body>
-
 </html>

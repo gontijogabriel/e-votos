@@ -3,7 +3,7 @@
     margin: 0;
 }
 a{
-    
+    text-decoration: none;
 }
 header{
     display: flex;
@@ -78,4 +78,15 @@ button {
 
 button:hover {
     background-color: #45a049;
+}
+
+.caminho{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50%;
+    font-size: 20px;
+    margin-bottom: 30px;
+    list-style: none;
+    gap: 2rem;
 }

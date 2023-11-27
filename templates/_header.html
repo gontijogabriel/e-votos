@@ -1,13 +1,7 @@
 {% load static %}
 
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   
-    <style>
-        *{
+<style>
+*{
     padding: 0;
     margin: 0;
 }
@@ -25,43 +19,20 @@ header{
     height: 90%;
     display: flex;
     justify-content: center;
-    align-items: center;
-    
-   
+    align-items: center
 }
 .pic{
     height: 100%;
-    
-    
 }
 .logout{
     padding: 10px;
     color: red;
 }
-.caminho{
-    display: flex;
-    justify-content: start;
-    align-items: center;
-    padding-left: 50px;
-    width: auto;
-    font-size: 20px;
-    margin-bottom: 30px;
-  
-}
+</style>
 
-    </style>
-</head>
 <header>
     <a class="lk" href="#">
         <img class="pic" src="{% static 'img/logo_dpdf.png' %}" alt="Logo DPDF" />
     </a>
     <a class="logout" href="{% url 'logout' %}">Logout</a>
 </header>
-<div class="caminho">
-
-        <a href="#">Home </a>
-        <a href="#">> Eleição </a>
-        <a href="#">> Votar > </a>
-        
-</div>
-</html>

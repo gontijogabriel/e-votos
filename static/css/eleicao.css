@@ -13,7 +13,9 @@ body {
     text-align: center;
     
 }
-
+a {
+    text-decoration: none;
+}
 .caixa-eleicao-atributos{
     display: flex;
     flex-direction: column;
@@ -84,4 +86,15 @@ button:hover {
     width: 120px;
     height: 120px;
     display: block;
+}
+
+.caminho{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50%;
+    font-size: 20px;
+    margin-bottom: 30px;
+    list-style: none;
+    gap: 2rem;
 }

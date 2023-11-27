@@ -1,48 +1,55 @@
 {% load static %}
-{% include '_header.html' %}
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../static/css/eleicao.css">
-    <title>Eleição</title>
+    <link rel="stylesheet" href="{% static 'css/eleicao.css' %}">
+    <title>Urna Digital DPDF</title>
 </head>
-<script src="../templates/_header.html"></script>
+
 <body>
+    
+    {% include '_header.html' %}
+
+    <ol class="caminho">
+        <li><a href="{% url 'index' %}">Home</a></li>
+        <li>></li>
+        <li><a href="#">Eleição ({{ eleicao.nome }})</a></li>
+    </ol>
 
     <div class="caixa-eleicao">
         <h1>{{ eleicao.nome }}</h1>
         <div class="caixa-eleicao-atributos">
             <p>Tipo: {{ eleicao.tipo }}</p>
-    <p>Data de Início: {{ eleicao.data_inicio }}</p>
-    <p>Data de Fim: {{ eleicao.data_fim }}</p>
+            <p>Data de Início: {{ eleicao.data_inicio|date:"d/m/Y H:i" }}</p>
+            <p>Data de Fim: {{ eleicao.data_fim|date:"d/m/Y H:i" }}</p>
         </div>
-    
     </div>
     
     <div class="card">
         <h2>Candidatos</h2>
-    <table>
-        <thead>
-            <tr>
-                <th>Foto</th>
-                <th>Nome</th>
-                <th>Matricula</th>
-                <th>Votar</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for candi in candidatos %}
-            <tr>
-                <td><img class="pic-cand" src="/media/{{ candi.foto_perfil }}" alt="{{ candi.nome }}" ></td>
-                <td>{{ candi.nome }}</td>
-                <td>{{ candi.matricula }}</td>
-                <td><button>Votar</button></td>
-            </tr>
-            {% endfor %}
-        </tbody>
-    </table>
+        <table>
+            <thead>
+                <tr>
+                    <th>Foto</th>
+                    <th>Nome</th>
+                    <th>Matricula</th>
+                    <th>Votar</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for candi in candidatos %}
+                <tr>
+                    <td><img class="pic-cand" src="/media/{{ candi.foto_perfil }}" alt="{{ candi.nome }}" ></td>
+                    <td>{{ candi.nome }}</td>
+                    <td>{{ candi.matricula }}</td>
+                    <td><button>Votar</button></td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
     </div>
     
 </body>
