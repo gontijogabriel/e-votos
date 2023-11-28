@@ -1,38 +1,15 @@
 {% load static %}
 
-<style>
-*{
-    padding: 0;
-    margin: 0;
-}
-header{
-    display: flex;
-    justify-content:space-between ;
-    align-items: center;
-    height: 7vh;
-    width: 100vw;
-    background-color: rgb(42, 66, 44);
-    margin-bottom: 10px;
-}
-.lk{
-    width: 15%;
-    height: 90%;
-    display: flex;
-    justify-content: center;
-    align-items: center
-}
-.pic{
-    height: 100%;
-}
-.logout{
-    padding: 10px;
-    color: red;
-}
-</style>
-
 <header>
-    <a class="lk" href="#">
-        <img class="pic" src="{% static 'img/logo_dpdf.png' %}" alt="Logo DPDF" />
-    </a>
-    <a class="logout" href="{% url 'logout' %}">Logout</a>
+    <div class="header-logo">
+        <a class="lk" href="#">
+            <img class="header-logo-img" src="{% static 'img/logo_dpdf.png' %}" alt="Logo DPDF" />
+        </a>
+    </div>
+
+    {% if user.is_authenticated %}
+        <div class="header-logout">
+            <a class="header-logout-link" href="{% url 'logout' %}"><img src="{% static 'img/icons/icon-logout.png' %}" alt="icon-logout"></a>
+        </div>
+    {% endif %}
 </header>

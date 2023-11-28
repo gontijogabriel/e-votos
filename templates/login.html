@@ -1,38 +1,29 @@
+{% extends '_base.html' %}
 {% load static %}
 
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{% static 'css/login.css' %}">
-    <title>Urna Digital DPDF</title>
-</head>
-<!-- <script src="../templates/_header.html"></script> -->
-<body>
-    {% include '_header.html' %}
-    <div class="main-container">
-        <div class="left">
-        <img src="../static/img/login_img.gif" alt="Gif Animado">
-        <!-- <a href="https://storyset.com/user">User illustrations by Storyset</a> -->
-        </div>
-        <div class="right">
-            <h1>Urna Digital DPDF</h1>
-            <form action="#" method="POST">
-                {% csrf_token %}
-                <label for="login">Email:</label>
-                <input type="text" id="email" name="email" required>
-        
-                <label for="senha">Senha:</label>
-                <input type="password" id="password" name="password" required>
-        
-                <button type="submit">Entrar</button>
-            </form>
-            <a href="{% url 'cadastro_eleitor' %}">Cadastro de Eleitor</a>
+{% block content %}
+<section class="login-container">
 
-            <a href="{% url 'recuperar_senha' %}">Recuperar Senha</a>
-        </div>
+    <div class="login-gif">
+        <img src="../static/img/login_img.gif" alt="Gif Animado">
     </div>
-        
-</body>
-</html>
+
+    <div class="login-form-container">
+        <h1>Urna Digital DPDF</h1>
+        <form class="login-form" action="#" method="POST">
+            {% csrf_token %}
+            <label for="login">Email:</label>
+            <input type="text" id="email" name="email" required>
+    
+            <label for="senha">Senha:</label>
+            <input type="password" id="password" name="password" required>
+    
+            <button class="login-form-button" type="submit">Entrar</button>
+        </form>
+
+        <a class="login-form-link" href="{% url 'cadastro_eleitor' %}">Cadastro de Eleitor</a>
+        <a class="login-form-link" href="{% url 'recuperar_senha' %}">Recuperar Senha</a>
+    </div>
+
+</section>
+{% endblock %}
