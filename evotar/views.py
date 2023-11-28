@@ -230,16 +230,29 @@ def editar_candidatos_todos(request):
 
 @login_required(login_url='login')
 @user_passes_test(is_admin, login_url='login')
-def editar_candidato(request, candidato_id):
-    if request.method == 'GET':
-        candidato = get_object_or_404(Candidato, id=candidato_id)
-        
-        return render(request, 'editar_candidato.html', {'candidato': candidato})
+def editar_candidato(request):
+    candidato_id = request.GET.get('candidato_id')
     
     if request.method == 'POST':
-        # atualiza os dados
-        candidatos = Candidato.objects.all()
-        return render(request, 'editar_candidatos_todos.html', {'candidatos': candidatos})
+        foto_perfil = request.POST.get('foto_perfil')
+        nome = request.POST.get('nome')
+        matricula = request.POST.get('matricula')
+        cpf = request.POST.get('cpf')
+        new_foto_perfil = request.POST.get('new_foto_perfil')
+        
+        user = get_object_or_404(Candidato, id=candidato_id)
+        foto_candidato_banco = user.foto_perfil
+    
+        print('foto_perfil -------- ', foto_perfil)
+        print('nome -------- ', nome)
+        print('matricula -------- ', matricula)
+        print('cpf -------- ', cpf)
+        print('new_foto_perfil -------- ', new_foto_perfil)
+
+    candidato = get_object_or_404(Candidato, id=candidato_id)
+    return render(request, 'editar_candidato.html', {'candidato': candidato})
+
+
 
 
 @login_required(login_url='login')

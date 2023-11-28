@@ -30,8 +30,11 @@
                             <td>{{ cand.nome }}</td>
                             <td>{{ cand.cpf }}</td>
                             <td>
-                                <a href="{% url 'editar_candidato' cand.id %}">Editar</a>
-                            </td>
+                                <form action="{% url 'editar_candidato' %}" method="GET">
+                                    <input type="hidden" id="candidato_id" name="candidato_id" value="{{ cand.id }}">
+                                    <button type="submit">Editar</button>
+                                </form>   
+'                            </td>
                         </tr>
                     {% endfor %}
                 </tbody>
