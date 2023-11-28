@@ -12,7 +12,7 @@
         <li> {{ candidato.nome }} </li>
     </ol>   
 
-    <form action="{% url 'editar_candidato' %}" method="POST" enctype="multipart/form-data">
+    <form action="{% url 'editar_candidato' candidato_id=candidato.id %}" method="POST" enctype="multipart/form-data">
         {% csrf_token %}
 
         <img name="foto_perfil" id="foto_perfil" src="/media/{{ candidato.foto_perfil }}" accept="image/*" alt="foto de perfil">

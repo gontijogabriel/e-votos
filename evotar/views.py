@@ -65,7 +65,7 @@ def recuperar_senha(request):
             
             try:
                 user = User.objects.get(email=email)
-            except User.DoesNotExist:
+            except User.DoesNotExist: 
                 msg = 'Usuário não cadastrado com esse email'
                 return render(request, 'recuperar_senha.html', {'msg': msg})
             
@@ -160,7 +160,6 @@ def redefinir_senha(request):
 
     return render(request, 'token_recuperar_senha.html', {'msg': msg, 'email_user': email})
 
-
 @login_required(login_url='login')
 def index(request):
     eleicoes = Eleicao.objects.all()
@@ -230,29 +229,27 @@ def editar_candidatos_todos(request):
 
 @login_required(login_url='login')
 @user_passes_test(is_admin, login_url='login')
-def editar_candidato(request):
-    candidato_id = request.GET.get('candidato_id')
-    
+def editar_candidato(request, candidato_id):
+    candidato = get_object_or_404(Candidato, id=candidato_id)
+
     if request.method == 'POST':
-        foto_perfil = request.POST.get('foto_perfil')
         nome = request.POST.get('nome')
         matricula = request.POST.get('matricula')
         cpf = request.POST.get('cpf')
-        new_foto_perfil = request.POST.get('new_foto_perfil')
-        
-        user = get_object_or_404(Candidato, id=candidato_id)
-        foto_candidato_banco = user.foto_perfil
-    
-        print('foto_perfil -------- ', foto_perfil)
-        print('nome -------- ', nome)
-        print('matricula -------- ', matricula)
-        print('cpf -------- ', cpf)
-        print('new_foto_perfil -------- ', new_foto_perfil)
+        new_foto_perfil = request.FILES.get('new_foto_perfil')
 
-    candidato = get_object_or_404(Candidato, id=candidato_id)
+        candidato.nome = nome
+        candidato.matricula = matricula
+        candidato.cpf = cpf
+        if new_foto_perfil:
+            candidato.foto_perfil = new_foto_perfil
+
+        candidato.save()
+
+        candidatos = Candidato.objects.all()
+        return render(request, 'editar_candidatos_todos.html', {'candidatos': candidatos})
+
     return render(request, 'editar_candidato.html', {'candidato': candidato})
-
-
 
 
 @login_required(login_url='login')
@@ -268,8 +265,6 @@ def eleicao(request):
 
     eleicoes = Eleicao.objects.all()
     return render(request, 'index.html', {'eleicoes': eleicoes})
-
-
 
 def logout_view(request):
     logout(request)

@@ -21,7 +21,7 @@ urlpatterns = [
     path('cadastro-candidato/', cadastro_candidato, name='cadastro_candidato'),
     path('editar-candidatos-todos/', editar_candidatos_todos, name='editar_candidatos_todos'),
     #path('editar-candidato/<int:candidato_id>/', editar_candidato, name='editar_candidato'),
-    path('editar-candidato/', editar_candidato, name='editar_candidato'),
+    path('editar-candidato/<int:candidato_id>', editar_candidato, name='editar_candidato'),
 
     path('adm-home/nova-eleicao/', nova_eleicao, name='nova_eleicao'),
     

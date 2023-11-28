@@ -30,7 +30,7 @@
                             <td>{{ cand.nome }}</td>
                             <td>{{ cand.cpf }}</td>
                             <td>
-                                <form action="{% url 'editar_candidato' %}" method="GET">
+                                <form action="{% url 'editar_candidato' candidato_id=cand.id %}" method="GET">
                                     <input type="hidden" id="candidato_id" name="candidato_id" value="{{ cand.id }}">
                                     <button type="submit">Editar</button>
                                 </form>   
