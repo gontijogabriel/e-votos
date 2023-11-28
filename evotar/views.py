@@ -221,19 +221,22 @@ def nova_eleicao(request):
     return render(request, 'nova_eleicao.html', {'candidatos': candidatos})
 
 
+@login_required(login_url='login')
+@user_passes_test(is_admin, login_url='login')
+def editar_candidato(request):
+    candidatos = Candidato.objects.all()
+    return render(request, 'editar_candidato_todos.html', {'candidatos': candidatos})
+
 
 @login_required(login_url='login')
 def eleicao(request):
     if request.method == 'POST':
         eleicao_id = request.POST.get('eleicao_id')
         
-        # Obtém a eleição com o ID fornecido ou retorna um erro 404 se não existir
         eleicao = get_object_or_404(Eleicao, id=eleicao_id)
 
-        # Obtém todos os candidatos associados a esta eleição
         candidatos = eleicao.candidatos.all()
 
-        # Renderiza o template com os dados
         return render(request, 'eleicao.html', {'eleicao': eleicao, 'candidatos': candidatos})
 
     eleicoes = Eleicao.objects.all()
