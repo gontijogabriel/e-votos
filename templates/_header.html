@@ -7,9 +7,9 @@
         </a>
     </div>
 
-    {% if user.is_authenticated %}
+    {% comment %} {% if user.is_authenticated %} {% endcomment %}
         <div class="header-logout">
             <a class="header-logout-link" href="{% url 'logout' %}"><img src="{% static 'img/icons/icon-logout.png' %}" alt="icon-logout"></a>
         </div>
-    {% endif %}
+    {% comment %} {% endif %} {% endcomment %}
 </header>
