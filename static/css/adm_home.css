@@ -1,11 +1,8 @@
-*{
-    padding: 0;
-    margin: 0;
-}
-a{
+
+adm a{
     padding: 5px;
 }
-header{
+/* header{
     height: 7vh;
     width: 100vw;
     background-color: purple;
@@ -16,12 +13,12 @@ body {
     background-color: #f4f4f4;
     text-align: center;
     
-}
-.pic{
+} */
+.adm-pic{
     height: 100%;
 }
 
-.card {
+.adm-card {
     display: flex;
     flex-direction: column;
     justify-content: center;

@@ -1,1 +1,2 @@
 somente admin cadastra eleitor
+remover logo easjur

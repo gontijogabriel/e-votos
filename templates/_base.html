@@ -7,11 +7,11 @@
     <title>Urna Digital DPDF</title>
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
 </head>
-
-<body>
-    {% include '_header.html' %}
-    {% block content %}{% endblock %}
-    {% include '_footer.html' %}
+{% include '_header.html' %}
+<body> 
+    <section class="container">
+    {% block content %}{% endblock %} 
+    </section>
 </body>
-
+{% include '_footer.html' %}
 </html>

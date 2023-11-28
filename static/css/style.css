@@ -40,17 +40,42 @@ body{
     height: 80vh;
 }
 
-
-/* LOGIN SECTION */
-
-.login-container {
+/* SECTION */
+.container {
     display: flex;
     justify-content: center;
     align-items: start;
     height: 100%;
+    
     background-color: #f4f4f4;
+}
+/* FIM SECTION */
+
+
+
+
+
+
+/* FOOTER */
+footer {
+    height: 9vh;
+    display: flex;
+    background-color: rgb(42, 66, 44);
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+}
+.footer-logo img {
+    width: 80px;
     
 }
+.footer-p {
+    font-size: 1rem;
+    color: #fff;
+}
+/* FIM FOOTER */
+
+/* LOGIN */
 
 .login-gif {
     display: flex;
@@ -119,25 +144,68 @@ body{
     color: #007BFF;
 }
 
-/* FIM LOGIN SECTION */
+/* FIM LOGIN*/
 
 
 
-/* FOOTER */
-footer {
-    height: 9vh;
+/* ADM HOME */
+.adm-container{
     display: flex;
-    background-color: rgb(42, 66, 44);
-    align-items: center;
     justify-content: center;
-    gap: 2rem;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    background-color: red;
 }
-.footer-logo img {
-    width: 80px;
+.adm-container h1{
+    font-size: 50px;
+}
+.adm-container h5, a {
+    color: #ff0000;
+    font-size: 20px;
+    text-decoration: solid;
+    text-decoration-color: black;/* Adapte os valores conforme necessário */
+}
+.adm-card-container{
+    width: 50%;
+    height: 80%;
     
 }
-.footer-p {
-    font-size: 1rem;
-    color: #fff;
+
+.adm-card-container-up{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 100%;
+    height: 50%;
+    background-color: pink;
 }
-/* FIM FOOTER */
+.adm-card-container-down{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 100%;
+    height: 50%;
+    background-color: green;
+}
+
+.adm-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 250px;
+    height: 60%;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    border: inset 10px transparent;
+    box-sizing: border-box;
+}
+
+    
+/* FIM ADM HOME */
