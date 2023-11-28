@@ -33,7 +33,7 @@ header {
 }
 header {
     width: 100%;
-    height: 100px;
+    height: 2vh;
     display: flex;
     background-color: rgb(42, 66, 44);
 }
