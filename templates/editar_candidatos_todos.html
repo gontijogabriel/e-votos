@@ -1,17 +1,15 @@
+{% extends '_base.html' %}
 {% load static %}
 
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{% static 'css/cadastro_candidato.css' %}">
-    <title>Urna Digital DPDF</title>
-</head>
+{% block content %}
+    <section>
 
-<body>
-    {% include '_header.html' %}
-    <div>
+        <ol class="caminho">
+            <li><a href="{% url 'adm_home' %}">Home</a></li>
+            <li>></li>
+            <li>Editar Candidato</li>
+        </ol>    
+
         <h1>Lista de Candidatos</h1>
         {% if candidatos %}
             <table>
@@ -32,7 +30,7 @@
                             <td>{{ cand.nome }}</td>
                             <td>{{ cand.cpf }}</td>
                             <td>
-                                <a href="{% url 'editar ' %}">Editar</a>
+                                <a href="{% url 'editar_candidato' cand.id %}">Editar</a>
                             </td>
                         </tr>
                     {% endfor %}
@@ -41,6 +39,5 @@
         {% else %}
             <p>Não existe candidatos cadastrados</p>
         {% endif %}
-    </div>
-</body>
-</html>
+    </section>
+{% endblock %}

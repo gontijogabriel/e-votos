@@ -223,9 +223,23 @@ def nova_eleicao(request):
 
 @login_required(login_url='login')
 @user_passes_test(is_admin, login_url='login')
-def editar_candidato(request):
+def editar_candidatos_todos(request):
     candidatos = Candidato.objects.all()
-    return render(request, 'editar_candidato_todos.html', {'candidatos': candidatos})
+    return render(request, 'editar_candidatos_todos.html', {'candidatos': candidatos})
+
+
+@login_required(login_url='login')
+@user_passes_test(is_admin, login_url='login')
+def editar_candidato(request, candidato_id):
+    if request.method == 'GET':
+        candidato = get_object_or_404(Candidato, id=candidato_id)
+        
+        return render(request, 'editar_candidato.html', {'candidato': candidato})
+    
+    if request.method == 'POST':
+        # atualiza os dados
+        candidatos = Candidato.objects.all()
+        return render(request, 'editar_candidatos_todos.html', {'candidatos': candidatos})
 
 
 @login_required(login_url='login')
