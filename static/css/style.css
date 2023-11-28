@@ -7,7 +7,7 @@
 /* HEADER */
 header {
     width: 100%;
-    height: 110px;
+    height: 11vh;
     display: flex;
     background-color: rgb(42, 66, 44);
 }
@@ -36,104 +36,46 @@ header {
 }
 /* FIM HEADER */
 
-/* LOGIN SECTION */
-
-/* .login-container {
-    display: flex;
-    justify-content: center;
-    align-items: start;
+body{
     height: 80vh;
-    width: 100%;
-    background-color:#f4f4f4;
 }
 
 
-.login-gif {
-    
-}
-
-.login-gif img{
-    width: 750px;
-    height: 750px;
-}
-
-.login-form-container {
-    padding: 20px;
-    text-align: center;
-    justify-content: start;
-    display: flex;
-    align-items: center;
-    width: 30%;
-    height: auto;
-    flex-direction: column;
-    background: transparent;
-}
-
-.login-form-container h1 {
-    font-size: 2rem;
-    margin-bottom: 10px;
-}
-
-.login-form-container form {
-    width: 300px;
-    margin: 0 auto;
-    background-color: #fff;
-    padding: 20px;
-    border-radius: 5px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-}
-
-.login-form-container input {
-    padding: 10px;
-    margin-bottom: 15px;
-}
-
-.login-form-button {
-    background-color: #007BFF;
-    color: #fff;
-    padding: 10px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-.login-form-link {
-    display: block;
-    margin-top: 10px;
-    text-decoration: none;
-    color: #007BFF;
-} */
+/* LOGIN SECTION */
 
 .login-container {
     display: flex;
     justify-content: center;
     align-items: start;
-    height: 80vh;
-    width: 100%;
+    height: 100%;
     background-color: #f4f4f4;
+    
 }
 
 .login-gif {
-    max-width: 100%; /* Torna o gif responsivo */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    width: 50%;
+    height: 100%;
+     /* Torna o gif responsivo */
+}
+.login-gif img{
+    height: 100%;
 }
 
-.login-gif img {
-    width: 100%;
-    max-width: 750px;
-    height: auto; /* Mantém a proporção da imagem */
-}
 
 .login-form-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
     padding: 20px;
     text-align: center;
-    justify-content: start;
-    display: flex;
-    align-items: center;
-    width: 80%; /* Ajuste para ocupar 80% da largura do contêiner pai */
-    max-width: 600px; /* Define uma largura máxima para o formulário */
-    height: auto;
-    flex-direction: column;
-    background: transparent;
+    width: 50%; 
+    height: 100%;
+    
 }
 
 .login-form-container h1 {
@@ -149,7 +91,10 @@ header {
     padding: 20px;
     border-radius: 5px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    
+    
 }
+
 
 .login-form-container input {
     width: calc(100% - 20px); /* Ocupa toda a largura, subtraindo o padding */
@@ -158,7 +103,8 @@ header {
 }
 
 .login-form-button {
-    background-color: #007BFF;
+    width: 100px;
+    background-color: #338C4E;
     color: #fff;
     padding: 10px;
     border: none;
@@ -173,12 +119,13 @@ header {
     color: #007BFF;
 }
 
-
 /* FIM LOGIN SECTION */
+
+
 
 /* FOOTER */
 footer {
-    height: 85px;
+    height: 9vh;
     display: flex;
     background-color: rgb(42, 66, 44);
     align-items: center;
@@ -187,7 +134,7 @@ footer {
 }
 .footer-logo img {
     width: 80px;
-    height: 40px;
+    
 }
 .footer-p {
     font-size: 1rem;
