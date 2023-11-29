@@ -232,9 +232,17 @@ footer {
     height: 100%;
 }
 .editar-candidato-container ol{
+    display: flex;
+    justify-content: start;
     width: 100%;
-    height: 15%;
-    padding-left: 25px;
+    height: 10%;
+    
+    
+}
+.editar-candidato-container li{
+    
+    margin-left: 30px;
+    
 }
 .editar-candidato-container img{
     height: 250px;

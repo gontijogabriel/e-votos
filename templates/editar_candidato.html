@@ -5,11 +5,11 @@
 
 <div class="editar-candidato-container">
     <ol >
-        <li><a href="{% url 'adm_home' %}">Home</a></li>
-        <li>></li>
-        <li><a href="{% url 'editar_candidatos_todos' %}">Editar Candidato</a></li>
-        <li>></li>
-        <li> {{ candidato.nome }} </li>
+        <li><a href="{% url 'adm_home' %}">Home ></a></li>
+        
+        <li><a href="{% url 'editar_candidatos_todos' %}">Editar Candidato ></a></li>
+        
+        <li> <a href=""> {{ candidato.nome }}</a></li>
     </ol>   
 
     <form action="{% url 'editar_candidato' candidato_id=candidato.id %}" method="POST" enctype="multipart/form-data">
