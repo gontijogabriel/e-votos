@@ -16,6 +16,7 @@
             <tr>
                 <th>Nome</th>
                 <th>Tipo</th>
+                <th>Candidatos<th>
                 <th>Data/Inicio</th>
                 <th>Data/Fim</th>
                 <th>Editar</th>
@@ -27,6 +28,11 @@
                 <tr>                
                     <td>{{ ele.nome }}</td>
                     <td>{{ ele.tipo }}</td>
+                    <td>
+                        {% for cand in candidatos %}
+                            <p>{{ ele.cand }}</p>
+                        {% endfor %}
+                    </td>
                     <td>{{ ele.data_inicio|date:"d/m/Y H:i" }}</td>
                     <td>{{ ele.data_fim|date:"d/m/Y H:i" }}</td>
                     <td>

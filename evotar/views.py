@@ -318,6 +318,7 @@ def editar_eleicao_todos(request):
 @user_passes_test(is_admin, login_url='login')
 def editar_eleicao(request, eleicao_id):
     eleicao = get_object_or_404(Eleicao, id=eleicao_id)
+    candidatos = get_object_or_404(Eleicao,id=eleicao_id)
     
     if request.method == 'POST':
         if request.POST.get('_method') == 'DELETE':
@@ -344,7 +345,7 @@ def editar_eleicao(request, eleicao_id):
         eleicoes = Eleicao.objects.all()
         return render(request, 'editar_eleicao_todos.html', {'eleicoes': eleicoes})
 
-    return render(request, 'editar_eleicao.html', {'eleicao': eleicao})
+    return render(request, 'editar_eleicao.html', {'eleicao': eleicao, 'candidatos': candidatos})
 
 
 

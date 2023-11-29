@@ -16,7 +16,7 @@
         {% csrf_token %}
 
         <label for="nome">Nome:</label>
-        <input type="text" id="nome" name="nome" value="{{ eleicao.name }}" required>
+        <input type="text" id="nome" name="nome" value="{{ eleicao.nome }}" required>
 
         <label for="tipo">Tipo:</label>
         <input type="text" id="tipo" name="tipo" value="{{ eleicao.tipo }}" required>
@@ -24,6 +24,23 @@
         {% comment %} <label for="candidatos">Candidatos:</label>
         <input type="text" id="candidatos" name="candidatos" value="{{ eleicao.candidatos }}" required> {% endcomment %}
 
+        {% comment %} <label for="candidatos">Candidatos Participando da Eleição:</label>
+        {% for candidato in candidatos %}
+            <option value="{{ candidato.id }}" {% if candidato in eleicao.candidatos.all %}selected{% endif %}>
+                {{ candidato.nome }}
+            </option>
+        {% endfor %} {% endcomment %}
+        
+        {% comment %} <label for="candidatos">Candidatos:</label>
+        <select id="candidatos" name="candidatos" multiple>
+            {% for candidato in candidatos %}
+                <option value="{{ candidato.id }}" {% if candidato in eleicao.candidatos.all %}selected{% endif %}>
+                    {{ candidato.nome }}
+                </option>
+            {% endfor %}
+        </select> {% endcomment %}
+
+        
         <label for="data_inicio">Data Inicio:</label>
         <input type="datetime-local" id="data_inicio" name="data_inicio" value="{{ eleicao.data_inicio }}" required>
 
