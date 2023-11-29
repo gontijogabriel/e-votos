@@ -1,2 +1,8 @@
-somente admin cadastra eleitor
-remover logo easjur
+- somente admin cadastra eleitor
+
+- Login
+    - remover cadastrar eleitor
+
+Ideias:
+- botao na pagina de login para eleitor realizar o voto
+- adicionar opcao onde o admin consegue importar uma planilha com os dados de candidatos e eleitores para serem cadastrados

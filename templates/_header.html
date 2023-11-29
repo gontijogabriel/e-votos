@@ -1,5 +1,4 @@
 {% load static %}
-
 <header>
     <div class="header-logo">
         <a class="lk" href="#">
@@ -9,7 +8,7 @@
 
     {% if user.is_authenticated %}
         <div class="header-logout">
-            <a class="header-logout-link" href="{% url 'logout' %}"><img src="{% static 'img/icons/icon-logout.png' %}" alt="icon-logout"></a>
+            <a class="header-logout-link" href="{% url 'logout' %}"><img src="{% static 'img/logout-64.png' %}" alt="icon-logout"></a>
         </div>
     {% endif %}
 </header>

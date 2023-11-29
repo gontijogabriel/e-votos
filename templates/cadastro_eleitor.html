@@ -1,18 +1,16 @@
+{% extends '_base.html' %}
 {% load static %}
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{% static 'css/cadastro_eleitor.css' %}">
-    <title>Cadastro Eleitor</title>
-</head>
-<header>
-
-</header>
-<body>
+{% block content %}
+<section>
     <div class="card">
+
+        <ol class="caminho">
+            <li><a href="{% url 'adm_home' %}">Home</a></li>
+            <li>></li>
+            <li>Cadastrar Eeitor</li>
+        </ol> 
+
         <h2>Cadastro do Eleitor</h2>
         <form action="#" method="POST">
             {% csrf_token %}
@@ -36,6 +34,6 @@
 
             <button type="submit">Cadastrar Eleitor</Em></button>
         </form>
-        </div>
-</body>
-</html>
+    </div>
+</section>
+{% endblock %}
