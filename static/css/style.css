@@ -244,16 +244,18 @@ footer {
     margin-left: 30px;
     
 }
-.editar-candidato-container img{
-    height: 250px;
-    width: 250px;
+.editar-candidato-container label{
+    
+    margin-left: 30px;
+    align-self: self-start;
+    
 }
 .editar-candidato-container form{
     display: flex;
     align-items: center;
     flex-direction: column;
-    height: 85%;
-    width: 25%;
+    height: 650px;
+    width: 450px;
     margin: 20px 0;
     background-color: #fff;
     padding: 20px;
@@ -268,7 +270,6 @@ footer {
     background-position: center;
     width: 50%;
     height: 35%;
-  
     margin-bottom: 15px;
 }
 
