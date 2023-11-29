@@ -1,0 +1,52 @@
+{% extends '_base.html' %}
+{% load static %}
+
+{% block content %}
+<section>
+
+    <ol class="caminho">
+        <li><a href="{% url 'adm_home' %}">Home</a></li>
+        <li>></li>
+        <li>Editar Eleitor</li>
+    </ol>    
+
+    {% if eleitores %}
+    <h1>Lista de Eleitores</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Matrícula</th>
+                <th>Nome</th>
+                <th>CPF</th>
+                <th>Selecionar</th>
+                <th>Excluir</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for elei in eleitores %}
+            <tr>                
+                <td>{{ elei.matricula }}</td>
+                <td>{{ elei.name }}</td>
+                <td>{{ elei.cpf }}</td>
+                <td>
+                    <form action="{% url 'editar_eleitor' eleitor_id=elei.id %}" method="GET">
+                        <input type="hidden" id="elei_id" name="elei_id" value="{{ elei.id }}">
+                        <button type="submit">Editar</button>
+                    </form>
+                </td>
+                <td>
+                    <form action="{% url 'editar_eleitor' eleitor_id=elei.id %}" method="POST">
+                        {% csrf_token %}
+                        <input type="hidden" name="_method" value="DELETE">
+                        <button type="submit">Excluir</button>
+                    </form>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% else %}
+        <p>Não existe Eleitores cadastrados</p>
+    {% endif %}
+</section>
+{% endblock %}

@@ -7,7 +7,7 @@ from evotar.views import (
     recuperar_senha, redefinir_senha,
     cadastro_eleitor, cadastro_candidato,
     nova_eleicao, eleicao, editar_candidatos_todos,
-    editar_candidato
+    editar_candidato, editar_eleitores_todos, editar_eleitor
 )
 
 urlpatterns = [
@@ -17,10 +17,11 @@ urlpatterns = [
     path('adm-home/', adm_home, name='adm_home'),
 
     path('cadastro-eleitor/', cadastro_eleitor, name='cadastro_eleitor'),
+    path('editar-eleitores-todos/', editar_eleitores_todos, name='editar_eleitores_todos'),
+    path('editar_eleitor/<int:eleitor_id>', editar_eleitor, name='editar_eleitor'),
     
     path('cadastro-candidato/', cadastro_candidato, name='cadastro_candidato'),
     path('editar-candidatos-todos/', editar_candidatos_todos, name='editar_candidatos_todos'),
-    #path('editar-candidato/<int:candidato_id>/', editar_candidato, name='editar_candidato'),
     path('editar-candidato/<int:candidato_id>', editar_candidato, name='editar_candidato'),
 
     path('adm-home/nova-eleicao/', nova_eleicao, name='nova_eleicao'),

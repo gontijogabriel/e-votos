@@ -6,7 +6,7 @@ from django.contrib.auth.decorators import user_passes_test
 from datetime import datetime
 from evotar.utils import is_admin, enviar_token_email, gerar_token
 from django.conf import settings
-from evotar.models import Eleicao, Candidato
+from evotar.models import Eleicao, Candidato, Eleitor
 
 # Login
 def login_view(request):
@@ -226,30 +226,72 @@ def editar_candidatos_todos(request):
     candidatos = Candidato.objects.all()
     return render(request, 'editar_candidatos_todos.html', {'candidatos': candidatos})
 
-
 @login_required(login_url='login')
 @user_passes_test(is_admin, login_url='login')
 def editar_candidato(request, candidato_id):
     candidato = get_object_or_404(Candidato, id=candidato_id)
 
     if request.method == 'POST':
-        nome = request.POST.get('nome')
-        matricula = request.POST.get('matricula')
-        cpf = request.POST.get('cpf')
-        new_foto_perfil = request.FILES.get('new_foto_perfil')
+        if request.POST.get('_method') == 'DELETE':
+            candidato.delete()
+            candidatos = Candidato.objects.all()
+            return render(request, 'editar_candidatos_todos.html', {'candidatos': candidatos})
+        
+        else:
+            nome = request.POST.get('nome')
+            matricula = request.POST.get('matricula')
+            cpf = request.POST.get('cpf')
+            new_foto_perfil = request.FILES.get('new_foto_perfil')
 
-        candidato.nome = nome
-        candidato.matricula = matricula
-        candidato.cpf = cpf
-        if new_foto_perfil:
-            candidato.foto_perfil = new_foto_perfil
+            candidato.nome = nome
+            candidato.matricula = matricula
+            candidato.cpf = cpf
 
-        candidato.save()
+            if new_foto_perfil:
+                candidato.foto_perfil = new_foto_perfil
 
-        candidatos = Candidato.objects.all()
-        return render(request, 'editar_candidatos_todos.html', {'candidatos': candidatos})
+            candidato.save()
+
+            candidatos = Candidato.objects.all()
+            return render(request, 'editar_candidatos_todos.html', {'candidatos': candidatos})
 
     return render(request, 'editar_candidato.html', {'candidato': candidato})
+
+
+
+@login_required(login_url='login')
+@user_passes_test(is_admin, login_url='login')
+def editar_eleitores_todos(request):
+    eleitores = Eleitor.objects.filter(is_superuser=False)
+    return render(request, 'editar_eleitores_todos.html', {'eleitores': eleitores})
+
+
+@login_required(login_url='login')
+@user_passes_test(is_admin, login_url='login')
+def editar_eleitor(request, eleitor_id):
+    eleitor = get_object_or_404(Eleitor, id=eleitor_id)
+
+    if request.method == 'POST':
+        if request.POST.get('_method') == 'DELETE':
+            eleitor.delete()
+            eleitores = Eleitor.objects.filter(is_superuser=False)
+            return render(request, 'editar_eleitores_todos.html', {'eleitores': eleitores})
+
+        else:
+            nome = request.POST.get('nome')
+            matricula = request.POST.get('matricula')
+            cpf = request.POST.get('cpf')
+
+            eleitor.name = nome
+            eleitor.matricula = matricula
+            eleitor.cpf = cpf
+
+            eleitor.save()
+
+            eleitores = Eleitor.objects.filter(is_superuser=False)
+            return render(request, 'editar_eleitores_todos.html', {'eleitores': eleitores})
+    
+    return render(request, 'editar_eleitor.html', {'eleitor': eleitor})
 
 
 @login_required(login_url='login')

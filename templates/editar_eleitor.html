@@ -1,0 +1,30 @@
+{% extends '_base.html' %}
+{% load static %}
+
+{% block content %}
+<section>
+
+    <ol class="caminho">
+        <li><a href="{% url 'adm_home' %}">Home</a></li>
+        <li>></li>
+        <li><a href="{% url 'editar_eleitores_todos' %}">Editar Candidato</a></li>
+        <li>></li>
+        <li> {{ eleitor.nome }} </li>
+    </ol>   
+
+    <form action="{% url 'editar_eleitor' eleitor_id=eleitor.id %}" method="POST">
+        {% csrf_token %}
+
+        <label for="nome">Nome:</label>
+        <input type="text" id="nome" name="nome" value="{{ eleitor.name }}" required>
+
+        <label for="matricula">Matricula:</label>
+        <input type="text" id="matricula" name="matricula" value="{{ eleitor.matricula }}" required>
+
+        <label for="cpf">CPF:</label>
+        <input type="text" id="cpf" name="cpf" value="{{ eleitor.cpf }}" required>
+
+        <button type="submit">Editar Eleitor</button>
+    </form>
+</section>
+{% endblock %}

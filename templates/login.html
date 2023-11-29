@@ -2,8 +2,6 @@
 {% load static %}
 
 {% block content %}
-
-
     <div class="login-gif">
         <img src="../static/img/login_img.gif" alt="Gif Animado">
     </div>
@@ -20,8 +18,10 @@
             <input type="password" id="password" name="password" required>
     
             <button class="login-form-button" type="submit">Entrar</button>
+            {% if msg %}
+                <p> {{ msg }}</p>
+            {% endif %}
         </form>
-
         <a class="login-form-link" href="{% url 'cadastro_eleitor' %}">Cadastro de Eleitor</a>
         <a class="login-form-link" href="{% url 'recuperar_senha' %}">Recuperar Senha</a>
     </div>
