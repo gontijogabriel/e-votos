@@ -1,0 +1,37 @@
+{% extends '_base.html' %}
+{% load static %}
+
+{% block content %}
+<section>
+
+    <ol class="caminho">
+        <li><a href="{% url 'adm_home' %}">Home</a></li>
+        <li>></li>
+        <li><a href="{% url 'editar_eleicao_todos' %}">Editar Eleição</a></li>
+        <li>></li>
+        <li> {{ eleicao.nome }} </li>
+    </ol>   
+
+    <form action="{% url 'editar_eleicao' eleicao_id=eleicao.id %}" method="POST">
+        {% csrf_token %}
+
+        <label for="nome">Nome:</label>
+        <input type="text" id="nome" name="nome" value="{{ eleicao.name }}" required>
+
+        <label for="tipo">Tipo:</label>
+        <input type="text" id="tipo" name="tipo" value="{{ eleicao.tipo }}" required>
+
+        {% comment %} <label for="candidatos">Candidatos:</label>
+        <input type="text" id="candidatos" name="candidatos" value="{{ eleicao.candidatos }}" required> {% endcomment %}
+
+        <label for="data_inicio">Data Inicio:</label>
+        <input type="datetime-local" id="data_inicio" name="data_inicio" value="{{ eleicao.data_inicio }}" required>
+
+        <label for="data_fim">Data Fim:</label>
+        <input type="datetime-local" id="data_fim" name="data_fim" value="{{ eleicao.data_fim }}" required>
+
+        <button type="submit">Salvar Eleição</button>
+    </form>
+
+</section>
+{% endblock %}

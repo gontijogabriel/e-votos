@@ -1,0 +1,53 @@
+{% extends '_base.html' %}
+{% load static %}
+
+{% block content %}
+<section>
+    
+    <ol class="caminho">
+        <li><a href="{% url 'adm_home' %}">Home</a></li>
+        <li>></li>
+        <li>Editar Eleição</li>
+    </ol>
+
+    {% if eleicoes %}
+    <table>
+        <thead>
+            <tr>
+                <th>Nome</th>
+                <th>Tipo</th>
+                <th>Data/Inicio</th>
+                <th>Data/Fim</th>
+                <th>Editar</th>
+                <th>Excluir</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for ele in eleicoes %}
+                <tr>                
+                    <td>{{ ele.nome }}</td>
+                    <td>{{ ele.tipo }}</td>
+                    <td>{{ ele.data_inicio|date:"d/m/Y H:i" }}</td>
+                    <td>{{ ele.data_fim|date:"d/m/Y H:i" }}</td>
+                    <td>
+                        <form action="{% url 'editar_eleicao' eleicao_id=ele.id %}" method="GET">
+                            <input type="hidden" id="eleicao_id" name="eleicao_id" value="{{ ele.id }}">
+                            <button type="submit">Editar</button>
+                        </form>
+                    </td>
+                    <td>
+                        <form action="{% url 'editar_eleicao' eleicao_id=ele.id %}" method="POST">
+                            {% csrf_token %}
+                            <input type="hidden" name="_method" value="DELETE">
+                            <button type="submit">Excluir</button>
+                        </form>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% else %}
+        <p>Não existe candidatos cadastrados</p>
+    {% endif %}
+</section>
+{% endblock %}

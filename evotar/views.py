@@ -298,15 +298,89 @@ def editar_eleitor(request, eleitor_id):
 def eleicao(request):
     if request.method == 'POST':
         eleicao_id = request.POST.get('eleicao_id')
-        
         eleicao = get_object_or_404(Eleicao, id=eleicao_id)
-
         candidatos = eleicao.candidatos.all()
 
         return render(request, 'eleicao.html', {'eleicao': eleicao, 'candidatos': candidatos})
 
     eleicoes = Eleicao.objects.all()
     return render(request, 'index.html', {'eleicoes': eleicoes})
+
+
+@login_required(login_url='login')
+@user_passes_test(is_admin, login_url='login')
+def editar_eleicao_todos(request):
+    eleicoes = Eleicao.objects.all()
+    return render(request, 'editar_eleicao_todos.html', {'eleicoes': eleicoes})
+
+
+@login_required(login_url='login')
+@user_passes_test(is_admin, login_url='login')
+def editar_eleicao(request, eleicao_id):
+    eleicao = get_object_or_404(Eleicao, id=eleicao_id)
+    
+    if request.method == 'POST':
+        if request.POST.get('_method') == 'DELETE':
+            eleicao.delete()
+            print('deletado')
+            eleicoes = Eleicao.objects.all()
+            return render(request, 'editar_eleicao_todos.html', {'eleicoes': eleicoes})
+
+        else:
+            nome = request.POST.get('nome')
+            tipo = request.POST.get('tipo')
+
+            data_inicio = request.POST.get('data_inicio')
+            data_fim = request.POST.get('data_fim')
+            
+            eleicao.nome = nome
+            eleicao.tipo = tipo
+            # eleicao.candidatos = candidatos
+            eleicao.data_inicio = data_inicio
+            eleicao.data_fim = data_fim
+            
+            eleicao.save()
+
+        eleicoes = Eleicao.objects.all()
+        return render(request, 'editar_eleicao_todos.html', {'eleicoes': eleicoes})
+
+    return render(request, 'editar_eleicao.html', {'eleicao': eleicao})
+
+
+
+# def editar_eleitor(request, eleitor_id):
+#     eleitor = get_object_or_404(Eleitor, id=eleitor_id)
+
+#     if request.method == 'POST':
+#         if request.POST.get('_method') == 'DELETE':
+#             eleitor.delete()
+#             eleitores = Eleitor.objects.filter(is_superuser=False)
+#             return render(request, 'editar_eleitores_todos.html', {'eleitores': eleitores})
+
+#         else:
+#             nome = request.POST.get('nome')
+#             matricula = request.POST.get('matricula')
+#             cpf = request.POST.get('cpf')
+
+#             eleitor.name = nome
+#             eleitor.matricula = matricula
+#             eleitor.cpf = cpf
+
+#             eleitor.save()
+
+#             eleitores = Eleitor.objects.filter(is_superuser=False)
+#             return render(request, 'editar_eleitores_todos.html', {'eleitores': eleitores})
+    
+#     return render(request, 'editar_eleitor.html', {'eleitor': eleitor})
+
+
+
+
+
+
+
+
+
 
 def logout_view(request):
     logout(request)
