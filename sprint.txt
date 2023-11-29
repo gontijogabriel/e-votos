@@ -1,7 +1,12 @@
 - somente admin cadastra eleitor
+- gerar log de tudo que o administrador e comite do sistema faz, eleitor não
 
 - Login
     - remover cadastrar eleitor
+
+- Cadastro do eleitor
+    - Senha aleatória enviada para o e-mail, adm não saber qual é a senha !
+
 
 Ideias:
 - botao na pagina de login para eleitor realizar o voto

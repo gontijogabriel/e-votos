@@ -15,14 +15,14 @@
             <input type="text" id="email" name="email" required>
     
             <label for="senha">Senha</label>
-            <input type="password" id="password" name="password" required>
-    
+            <input style="margin: 0;" type="password" id="password" name="password" required>
+            <a class="login-form-link" href="{% url 'recuperar_senha' %}">Recuperar Senha</a>
+            <!-- remover depois --> <a class="login-form-link" href="{% url 'cadastro_eleitor' %}">Cadastro de Eleitor</a>
             <button class="login-form-button" type="submit">Entrar</button>
             {% if msg %}
                 <p> {{ msg }}</p>
             {% endif %}
         </form>
-        <a class="login-form-link" href="{% url 'cadastro_eleitor' %}">Cadastro de Eleitor</a>
-        <a class="login-form-link" href="{% url 'recuperar_senha' %}">Recuperar Senha</a>
+        
     </div>
 {% endblock %}
