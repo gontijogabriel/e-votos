@@ -2,7 +2,7 @@
     padding: 0;
     margin: 0;
     box-sizing: border-box;
-    font-family: Arial, sans-serif;
+    font-family: 'Nova Square', sans-serif;
 }
 /* HEADER */
 header {
@@ -153,13 +153,14 @@ footer {
     flex-direction: column;
     width: 100%;
     height: 100%;
-    background-color: red;
+    background-color:  #f4f4f4;
 }
 .adm-container h1{
     font-size: 50px;
+    color: #338C4E;
 }
 .adm-container h5, a {
-    color: #ff0000;
+    color: #338C4E;
     font-size: 20px;
     text-decoration: solid;
     text-decoration-color: black;/* Adapte os valores conforme necessário */
@@ -176,7 +177,6 @@ footer {
     align-items: center;
     width: 100%;
     height: 50%;
-    background-color: pink;
 }
 .adm-card-container-down{
     display: flex;
@@ -184,7 +184,7 @@ footer {
     align-items: center;
     width: 100%;
     height: 50%;
-    background-color: green;
+    
 }
 
 .adm-card {
@@ -197,11 +197,14 @@ footer {
     background-color: #fff;
     border-radius: 5px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: contain;
-    border: inset 10px transparent;
-    box-sizing: border-box;
+    margin: 2px;
+}
+.adm-card a{
+    font-size: 15px;
+}
+.adm-card img{
+    height: 60%;
+    padding: 5px;
 }
 
     
