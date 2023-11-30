@@ -2,16 +2,17 @@
 {% load static %}
 
 {% block content %}
-<section>
+<div class="editar-eleitor-container">
 
-    <ol class="caminho">
-        <li><a href="{% url 'adm_home' %}">Home</a></li>
-        <li>></li>
-        <li>Editar Eleitor</li>
+    <ol>
+        <li><a href="{% url 'adm_home' %}">Home ></a></li>
+        
+        <li><a href="">Editar Eleitor</a> </li>
     </ol>    
 
     {% if eleitores %}
     <h1>Lista de Eleitores</h1>
+    <div class="contain-table">
     <table>
         <thead>
             <tr>
@@ -48,5 +49,6 @@
     {% else %}
         <p>Não existe Eleitores cadastrados</p>
     {% endif %}
-</section>
+</div>
+</div>
 {% endblock %}

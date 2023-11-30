@@ -2,15 +2,18 @@
 {% load static %}
 
 {% block content %}
-<section>
+<div class="nova-eleicao-editar-container">
     
-    <ol class="caminho">
-        <li><a href="{% url 'adm_home' %}">Home</a></li>
-        <li>></li>
-        <li>Editar Eleição</li>
+    <ol >
+        <li><a href="{% url 'adm_home' %}">Home ></a></li>
+        
+        <li><a href="">Editar Eleição</a></li>
     </ol>
 
     {% if eleicoes %}
+    <div class="contain-table">
+
+    
     <table>
         <thead>
             <tr>
@@ -55,5 +58,6 @@
     {% else %}
         <p>Não existe candidatos cadastrados</p>
     {% endif %}
-</section>
+</div>
+</div>
 {% endblock %}

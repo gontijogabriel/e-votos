@@ -268,8 +268,8 @@ footer {
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
-    width: 50%;
-    height: 35%;
+    width: 205px;
+    height: 195px;
     margin-bottom: 15px;
 }
 
@@ -297,6 +297,475 @@ footer {
     border-radius: 5px;
     cursor: pointer;
 }
-
-
 /* FIM EDITAR_CANDIDATO HOME */
+
+/* CADASTRO_ELEITOR */
+
+.cadastrar-eleitor-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;  
+}
+.cadastrar-eleitor-container h2{
+    font-size: 35px;
+    margin-bottom: 20px;
+}
+.cadastrar-eleitor-container ol{
+    display: flex;
+    justify-content: start;
+    width: 100%;
+    height: 10%;
+}
+.cadastrar-eleitor-container li{
+    
+    margin-left: 30px;
+    
+}
+.cadastrar-eleitor-container label{
+    
+    margin-left: 30px;
+    align-self: self-start;
+    
+}
+.cadastrar-eleitor-container form{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    height: 650px;
+    width: 450px;
+    margin: 20px 0;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    
+}
+
+.cadastrar-eleitor-container input {
+    width: 350px; /* Ocupa toda a largura, subtraindo o padding */
+    padding: 5px;
+     font-size: 16px;
+     border-width: 1px;
+     border-color: #CCCCCC;
+     background-color: #FFFFFF;
+     color: #000000;
+     border-style: solid;
+     border-radius: 8px;
+     box-shadow: 0px 0px 5px rgba(66,66,66,.75);
+     margin-top: 5px;
+     margin-bottom: 15px;
+}
+
+.cadastrar-eleitor-container button {
+    width: 100px;
+    background-color: #338C4E;
+    color: #fff;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 20px;
+}
+
+/* FIM CADASTRO_ELEITOR */
+
+/* EDITAR_ELEITOR */
+
+.editar-eleitor-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;  
+}
+.editar-eleitor-container h2{
+    font-size: 35px;
+    margin-bottom: 20px;
+}
+.editar-eleitor-container ol{
+    display: flex;
+    justify-content: start;
+    width: 100%;
+    height: 10%;
+   
+}
+.editar-eleitor-container li{
+    
+    margin-left: 30px;
+    
+}
+.editar-eleitor-container label{
+    
+    margin-left: 30px;
+    align-self: self-start;
+    
+}
+
+
+.editar-eleitor-container input {
+    width: 350px; /* Ocupa toda a largura, subtraindo o padding */
+    padding: 5px;
+     font-size: 16px;
+     border-width: 1px;
+     border-color: #CCCCCC;
+     background-color: #FFFFFF;
+     color: #000000;
+     border-style: solid;
+     border-radius: 8px;
+     box-shadow: 0px 0px 5px rgba(66,66,66,.75);
+     margin-top: 5px;
+     margin-bottom: 15px;
+}
+
+.editar-eleitor-container button {
+    width: 100px;
+    background-color: #338C4E;
+    color: #fff;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    
+}
+
+.editar-eleitor-container table {
+    width: 50%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    
+}
+
+.editar-eleitor-container th, td {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+.editar-eleitor-container th {
+    background-color: #f2f2f2;
+}
+
+.editar-eleitor-container tr:hover {
+    background-color: #f5f5f5;
+    
+}
+
+.contain-table{
+    display: flex;
+    justify-content: center;
+    align-items: start;
+    width: 100%;
+    height: 90%;
+    overflow: scroll;
+}
+
+/* FIM EDITAR_ELEITOR */
+
+/* EDITAR CANDIDATO TODOS */
+
+.editar-candidato-todos-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;  
+}
+.editar-candidato-todos-container h2{
+    font-size: 35px;
+    margin-bottom: 20px;
+}
+.editar-candidato-todos-container ol{
+    display: flex;
+    justify-content: start;
+    width: 100%;
+    height: 10%;
+   
+}
+.editar-candidato-todos-container li{
+    
+    margin-left: 30px;
+    
+}
+.editar-candidato-todos-container label{
+    
+    margin-left: 30px;
+    align-self: self-start;
+    
+}
+.editar-candidato-todos-container img{
+    border-radius: 50%;
+    
+}
+
+
+.editar-candidato-todos-container input {
+    width: 350px; /* Ocupa toda a largura, subtraindo o padding */
+    padding: 5px;
+     font-size: 16px;
+     border-width: 1px;
+     border-color: #CCCCCC;
+     background-color: #FFFFFF;
+     color: #000000;
+     border-style: solid;
+     border-radius: 8px;
+     box-shadow: 0px 0px 5px rgba(66,66,66,.75);
+     margin-top: 5px;
+     margin-bottom: 15px;
+}
+
+.editar-candidato-todos-container button {
+    width: 100px;
+    background-color: #338C4E;
+    color: #fff;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    
+}
+ 
+.editar-candidato-todos-container table {
+    width: 50%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    
+}
+
+.editar-candidato-todos-container th, td {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+.editar-candidato-todos-container th {
+    background-color: #f2f2f2;
+}
+
+.editar-candidato-todos-container tr:hover {
+    background-color: #f5f5f5;
+    
+}
+
+.contain-table{
+    display: flex;
+    justify-content: center;
+    align-items: start;
+    width: 100%;
+    height: 90%;
+    overflow: scroll;
+}
+
+/* FIM EDITAR_CANDIDATO_TODOS */
+
+/* NOVA ELEIÇÃO */
+
+.nova-eleicao-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;  
+    
+}
+.nova-eleicao-container h2{
+    font-size: 35px;
+    margin-bottom: 20px;
+}
+.nova-eleicao-container ol{
+    display: flex;
+    justify-content: start;
+    width: 100%;
+    height: 10%;
+}
+.nova-eleicao-container li{
+    
+    margin-left: 30px;
+    
+}
+
+.nova-eleicao-container img{
+    border-radius: 50%;
+    
+}
+
+
+
+.nova-eleicao-container input, select{
+     /* Ocupa toda a largura, subtraindo o padding */
+     padding: 5px;
+     font-size: 16px;
+     border-width: 1px;
+     width: 300px;
+     height: 50px;
+     border-color: #CCCCCC;
+     background-color: #FFFFFF;
+     color: #000000;
+     border-style: solid;
+     border-radius: 8px;
+     box-shadow: 0px 0px 5px rgba(66,66,66,.75);
+     margin-top: 5px;
+     margin-bottom: 15px;
+}
+
+.nova-eleicao-container button {
+    width: 100px;
+    background-color: #338C4E;
+    color: #fff;
+    padding: 10px;
+    margin-top: 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    
+}
+.nova-eleicao-container form{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 50%;
+    height: 90%;
+    background-color: #fff;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 15px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    
+}
+.nova-eleicao-container table{
+    
+    border-collapse: collapse;
+    margin-top: 20px;
+    
+}
+
+.nova-eleicao-container th, td {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+.nova-eleicao-container th {
+    background-color: #f2f2f2;
+}
+
+.nova-eleicao-container tr:hover {
+    background-color: #f5f5f5;
+    
+}
+
+.contain-table{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+    height: 90%;
+    overflow: scroll;
+}
+
+/* FIM NOVA ELEIÇÃO */
+
+/* NOVA ELEIÇÃO EDITAR */
+
+.nova-eleicao-editar-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;  
+}
+.nova-eleicao-editar-container h2{
+    font-size: 35px;
+    margin-bottom: 20px;
+}
+.nova-eleicao-editar-container ol{
+    display: flex;
+    justify-content: start;
+    width: 100%;
+    height: 10%;
+   
+}
+.nova-eleicao-editar-container li{
+    
+    margin-left: 30px;
+    
+}
+.nova-eleicao-editar-container label{
+    
+    margin-left: 30px;
+    align-self: self-start;
+    
+}
+.nova-eleicao-editar-container img{
+    border-radius: 50%;
+    
+}
+
+
+.nova-eleicao-editar-container input {
+    width: 350px; /* Ocupa toda a largura, subtraindo o padding */
+    padding: 5px;
+     font-size: 16px;
+     border-width: 1px;
+     border-color: #CCCCCC;
+     background-color: #FFFFFF;
+     color: #000000;
+     border-style: solid;
+     border-radius: 8px;
+     box-shadow: 0px 0px 5px rgba(66,66,66,.75);
+     margin-top: 5px;
+     margin-bottom: 15px;
+}
+
+.nova-eleicao-editar-container button {
+    width: 100px;
+    background-color: #338C4E;
+    color: #fff;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    
+}
+ 
+.nova-eleicao-editar-container table {
+    width: 50%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    
+}
+
+.nova-eleicao-editar-container th, td {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+.nova-eleicao-editar-container th {
+    background-color: #f2f2f2;
+}
+
+.nova-eleicao-editar-container tr:hover {
+    background-color: #f5f5f5;
+    
+}
+
+.contain-table{
+    display: flex;
+    justify-content: center;
+    align-items: start;
+    width: 100%;
+    height: 90%;
+    overflow: scroll;
+}
+
+/* FIM NOVA ELEIÇÃO EDITAR */

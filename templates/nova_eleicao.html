@@ -2,18 +2,16 @@
 {% load static %}
 
 {% block content %}
-<section>
+<div class="nova-eleicao-container">
 
-    <ol class="caminho">
-        <li><a href="{% url 'adm_home' %}">Home</a></li>
-        <li>></li>
-        <li>Cadastrar Eleição</li>
+    <ol>
+        <li><a href="{% url 'adm_home' %}">Home ></a></li>
+        
+        <li><a href="">Cadastrar Eleição</a> </li>
     </ol>
 
-
-    <div class="card">
-        <h2>Cadastro de Eleição</h2>
         <form method="POST" action="{% url 'nova_eleicao' %}" >
+            <h2>Cadastro de Eleição</h2>
             {% csrf_token %}
             <label for="nome">Nome da eleição:</label>
             <input type="text" id="nome" name="nome" required>
@@ -26,15 +24,16 @@
             </select>
 
             <label for="data_de_inicio">Data de Inicio:</label>
-            <input type="datetime-local" id="data_de_inicio" name="data_de_inicio" required>
+            <input class="nova-eleicao-container-date" type="datetime-local" id="data_de_inicio" name="data_de_inicio" required>
 
-            <label for="data_de_fim">Data de Fim:</label>
+            <label  for="data_de_fim">Data de Fim:</label>
             <input type="datetime-local" id="data_de_fim" name="data_de_fim" required>
 
             <label for="candidatos">Opcões de Candidatos para participar das Eleições:</label>
             
+            <div class="contain-table">
             {% if candidatos %}
-            <table>
+            <table >
                 <thead>
                     <tr>
                         <th>Foto</th>
@@ -52,17 +51,18 @@
                             <td>{{ cand.nome }}</td>
                             <td>{{ cand.cpf }}</td>
                             <td>
-                                <input type="checkbox" id="candidato{{ cand.id }}" name="candidatos" value="{{ cand.id }}">
+                                <input style="width: auto; height: auto;" type="checkbox" id="candidato{{ cand.id }}" name="candidatos" value="{{ cand.id }}">
                             </td>
                         </tr>
                     {% endfor %}
                 </tbody>
             </table>
+        </div>
             {% else %}
                 <p>Não existe candidatos cadastrados</p>
             {% endif %}
             <button type="submit">Criar Eleição</button>
         </form>
-    </div>
-</section>
+   
+</div>
 {% endblock %}

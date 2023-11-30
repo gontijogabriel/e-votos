@@ -2,17 +2,16 @@
 {% load static %}
 
 {% block content %}
-<section>
-    <div class="card">
-
-        <ol class="caminho">
-            <li><a href="{% url 'adm_home' %}">Home</a></li>
-            <li>></li>
-            <li>Cadastrar Eeitor</li>
+<div class="cadastrar-eleitor-container">
+    
+        <ol>
+            <li><a href="{% url 'adm_home' %}">Home ></a></li>      
+            <li><a href="">Cadastrar Eeitor</a> </li>
         </ol> 
 
-        <h2>Cadastro do Eleitor</h2>
+        
         <form action="#" method="POST">
+            <h2>Cadastro do Eleitor</h2>
             {% csrf_token %}
             <label for="name">Nome:</label>
             <input type="text" id="name" name="name" required>
@@ -31,9 +30,16 @@
 
             <label for="password-2">Repita sua Senha:</label>
             <input type="password" id="password-2" name="password-2" required>
+            <div> 
+                <button type="submit">Cadastrar Eleitor</Em></button>
+                <a>Importar CSV</Em></a>
+            </div>
+            
+            {%if msg %}
+                <p>{{ msg }}</p>
+            {% endif %}
 
-            <button type="submit">Cadastrar Eleitor</Em></button>
         </form>
-    </div>
-</section>
+    
+</div>
 {% endblock %}
