@@ -455,7 +455,7 @@ footer {
     
 }
 
-.contain-table{
+.editar-eleitor-container-contain-table{
     display: flex;
     justify-content: center;
     align-items: start;
@@ -552,7 +552,7 @@ footer {
     
 }
 
-.contain-table{
+.editar-candidato-todos-container-contain-table{
     display: flex;
     justify-content: center;
     align-items: start;
@@ -640,7 +640,7 @@ footer {
     
 }
 .nova-eleicao-container table{
-    
+    width: 100%;
     border-collapse: collapse;
     margin-top: 20px;
     
@@ -661,7 +661,7 @@ footer {
     
 }
 
-.contain-table{
+.nova-eleicao-editar-container-contain-table{
     display: flex;
     justify-content: center;
     align-items: center;
@@ -741,7 +741,6 @@ footer {
     width: 50%;
     border-collapse: collapse;
     margin-top: 20px;
-    
 }
 
 .nova-eleicao-editar-container th, td {
@@ -769,3 +768,90 @@ footer {
 }
 
 /* FIM NOVA ELEIÇÃO EDITAR */
+
+/* CADASTRO_ELEITOR */
+
+.cadastrar-candidato-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;  
+}
+.cadastrar-candidato-container h1{
+    font-size: 35px;
+    margin-bottom: 20px;
+}
+.cadastrar-candidato-container ol{
+    display: flex;
+    justify-content: start;
+    width: 100%;
+    height: 10%;
+
+}
+.cadastrar-candidato-container li{
+    
+    margin-left: 30px;
+    
+}
+.cadastrar-candidato-container label{
+    
+    margin-left: 50px;
+    align-self: self-start;
+    
+}
+
+.contain{
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 90%;
+   
+}
+
+.cadastrar-candidato-container form{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    height: 500px;
+    width: 450px;
+    margin: 20px 0;
+    background-color: #fff;
+   
+    border-radius: 15px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    
+}
+
+.cadastrar-candidato-container input {
+    width: 350px; /* Ocupa toda a largura, subtraindo o padding */
+    padding: 5px;
+     font-size: 16px;
+     border-width: 1px;
+     border-color: #CCCCCC;
+     background-color: #FFFFFF;
+     color: #000000;
+     border-style: solid;
+     border-radius: 8px;
+     box-shadow: 0px 0px 5px rgba(66,66,66,.75);
+     margin-top: 5px;
+     margin-bottom: 15px;
+}
+
+.cadastrar-candidato-container button {
+    width: 180px;
+    font-size: 15px;
+    background-color: #338C4E;
+    color: #fff;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 20px;
+}
+
+/* FIM CADASTRO_ELEITOR */

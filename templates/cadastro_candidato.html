@@ -2,20 +2,21 @@
 {% load static %}
 
 {% block content %}
-<section>
-    <div class="card">
+<div class="cadastrar-candidato-container">
+    
 
-        <ol class="caminho">
-            <li><a href="{% url 'adm_home' %}">Home</a></li>
-            <li>></li>
-            <li>Cadastrar Candidato</li>
+        <ol>
+            <li><a href="{% url 'adm_home' %}">Home ></a></li>
+            
+            <li><a href="">Cadastrar Candidato</a> </li>
         </ol>
 
-        <h1>Cadastro de Candidato</h1>
+        <div class="contain">
+        <form method="POST" enctype="multipart/form-data">
+            <h1>Cadastro de Candidato</h1>
         {% if msg %}
             <p>{{ msg }}</p>
-        {% endif %} 
-        <form method="POST" enctype="multipart/form-data">
+        {% endif %}
         <!-- <form action="{% url 'cadastro_candidato' %}" method="POST"> -->
             {% csrf_token %}
             <label for="nome">Nome:</label>
@@ -33,5 +34,5 @@
             <button type="submit">Cadastrar Candidato</button>
         </form>
     </div>
-</section>
+</div>
 {% endblock %}
